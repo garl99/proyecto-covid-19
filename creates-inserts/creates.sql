@@ -1,3 +1,4 @@
+
 create or replace type Rango_Fecha as object(
     fecha_inicio date,
     fecha_final date,
@@ -21,7 +22,6 @@ create or replace type Info_Persona as object(
     segundo_apellido varchar2(20),
     fecha_nacimiento date,
     genero char(1),
-    foto BLOB,
     static function calcular_edad(fecha_nacimiento date) return number,
     static function cantidad_sintomas(id number) return number
 );
@@ -47,6 +47,7 @@ create table Patologia(
 create table Persona(
     id number primary key,
     info_persona Info_Persona,
+    foto BLOB not null,
     id_pasajero number unique,
     tipo varchar2(15) not null,
     fk_lugar number,
@@ -210,5 +211,6 @@ create table Modelo_Lugar(
     constraint FK_fk_modelo foreign key (fk_modelo) references Modelo(id),
     constraint FK_fk_lugar_modelo foreign key (fk_lugar) references Lugar(id)
 );
+
 
 
