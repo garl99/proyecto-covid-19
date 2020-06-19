@@ -213,6 +213,7 @@ create table Modelo_Lugar(
 
 
 
+
 create sequence sec_Lugar
 start with 1
 increment by 1;
