@@ -142,7 +142,7 @@ create table Avion(
 
 create table Viaje(
     id number primary key,
-    rango_fecha Rango_Fecha,
+    fecha_inicio date,
     fk_pasajero number not null,
     fk_origen number not null,
     fk_destino number not null,
@@ -160,9 +160,9 @@ create table Estatus(
 
 create table Estatus_Persona(
     id number primary key,
-    rango_fecha Rango_Fecha,    
+    fecha_infeccion date,    
     fecha_fallecimiento date,
-    fecha_infeccion date,
+    fecha_recuperacion date,
     fk_estatus number not null,
     fk_persona number not null,
     fk_centro_atencion number,

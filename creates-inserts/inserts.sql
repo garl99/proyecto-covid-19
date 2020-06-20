@@ -110,6 +110,24 @@ execute agregaAerolinea ('IMAGEN_DIR_AEROLINEA','13.png','Plus Ultra', 15);
 execute agregaAerolinea ('IMAGEN_DIR_AEROLINEA','14.png','Caribean Airlines', 10);
 execute agregaAerolinea ('IMAGEN_DIR_AEROLINEA','15.jpg','Wingo', 16);
 
+
+/*---------------------------Avion-------------------------------------*/
+insert into Avion (id,modelo, fecha, n_motores, fk_aerolinea) values (sec_avion,'A220', 2002, 3, 'Qatar Airways');
+insert into Avion (id,modelo, fecha, n_motores, fk_aerolinea) values (sec_avion,'700', 2005, 3, 'Copa Airlines');
+insert into Avion (id,modelo, fecha, n_motores, fk_aerolinea) values (sec_avion,'CRJ900', 2004, 2, 'Avianca');
+insert into Avion (id,modelo, fecha, n_motores, fk_aerolinea) values (sec_avion,'A320', 1994, 4, 'Air France');
+insert into Avion (id,modelo, fecha, n_motores, fk_aerolinea) values (sec_avion,'Boeing717', 1997, 3, 'AeroMexico');
+insert into Avion (id,modelo, fecha, n_motores, fk_aerolinea) values (sec_avion,'CRJ900', 1992, 3, 'American Airlines');
+insert into Avion (id,modelo, fecha, n_motores, fk_aerolinea) values (sec_avion,'A340', 2012, 4, 'Laser Airlines');
+insert into Avion (id,modelo, fecha, n_motores, fk_aerolinea) values (sec_avion,'Boeing747', 1998, 2, 'Delta Airlines');
+insert into Avion (id,modelo, fecha, n_motores, fk_aerolinea) values (sec_avion,'A320', 2004, 2, 'United Airlines');
+insert into Avion (id,modelo, fecha, n_motores, fk_aerolinea) values (sec_avion,'Boeing717', 1994, 3, 'Air Europa');
+insert into Avion (id,modelo, fecha, n_motores, fk_aerolinea) values (sec_avion,'Boeing747', 2004, 4, 'Iberia');
+insert into Avion (id,modelo, fecha, n_motores, fk_aerolinea) values (sec_avion,'A220', 2011, 3, 'Turkish Airlines');
+insert into Avion (id,modelo, fecha, n_motores, fk_aerolinea) values (sec_avion,'A350', 1991, 4, 'Plus Ultra');
+insert into Avion (id,modelo, fecha, n_motores, fk_aerolinea) values (sec_avion,'A340', 1985, 2, 'Caribean Airlines');
+insert into Avion (id,modelo, fecha, n_motores, fk_aerolinea) values (sec_avion,'Boeing787', 2010, 2, 'Wingo');
+
 /*------------------------------DROP PROCEDURES---------------------------*/
     drop procedure "AGREGAEROLINEA";
     drop procedure "AGREGAPERSONA";
