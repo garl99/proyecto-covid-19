@@ -21,7 +21,6 @@ create or replace type Info_Persona as object(
     segundo_apellido varchar2(20),
     fecha_nacimiento date,
     genero char(1),
-    foto BLOB,
     static function calcular_edad(fecha_nacimiento date) return number,
     static function cantidad_sintomas(id number) return number
 );
@@ -47,6 +46,7 @@ create table Patologia(
 create table Persona(
     id number primary key,
     info_persona Info_Persona,
+    foto BLOB not null,
     id_pasajero number unique,
     tipo varchar2(15) not null,
     fk_lugar number,
@@ -212,3 +212,87 @@ create table Modelo_Lugar(
 );
 
 
+
+
+create sequence sec_Lugar
+start with 1
+increment by 1;
+
+create sequence sec_Patologia
+start with 1
+increment by 1;
+
+create sequence sec_Persona
+start with 1
+increment by 1;
+
+create sequence sec_Patalogia_Persona
+start with 1
+increment by 1;
+
+create sequence sec_Sintoma
+start with 1
+increment by 1;
+
+create sequence sec_Sintoma_Persona
+start with 1
+increment by 1;
+create sequence sec_Centro_Atencion
+start with 1
+increment by 1;
+
+create sequence sec_Insumo
+start with 1
+increment by 1;
+
+create sequence sec_Centro_Insumo
+start with 1
+increment by 1;
+
+create sequence sec_Ayuda_Humanitaria
+start with 1
+increment by 1;
+
+create sequence sec_Ayuda_Insumo
+start with 1
+increment by 1;
+
+create sequence sec_Aerolinea
+start with 1
+increment by 1;
+
+create sequence sec_Avion
+start with 1
+increment by 1;
+
+create sequence sec_Viaje
+start with 1
+increment by 1;
+
+create sequence sec_Estatus
+start with 1
+increment by 1;
+
+create sequence sec_Estatus_Persona
+start with 1
+increment by 1;
+
+create sequence sec_Frontera
+start with 1
+increment by 1;
+
+create sequence sec_Modelo
+start with 1
+increment by 1;
+
+create sequence sec_Proveedor_Internet
+start with 1
+increment by 1;
+
+create sequence sec_Lugar_Proveedor
+start with 1
+increment by 1;
+
+create sequence sec_Modelo_Lugar
+start with 1
+increment by 1;
