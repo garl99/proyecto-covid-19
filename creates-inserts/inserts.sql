@@ -1,31 +1,65 @@
-create directory IMAGEN_DIR_AEROLINEA as 'C:\Proyecto\Aerolineas';
-create directory IMAGEN_DIR_PERSONAS as'C:\Proyecto\Personas';
+/*Patologías*/
+
+INSERT INTO Patologia (id, nombre)
+VALUES (sec_Patalogia.nextval, 'Diabetes'),
+       (sec_Patalogia.nextval, 'Cáncer'),
+       (sec_Patalogia.nextval, 'Hipertensión'),
+       (sec_Patalogia.nextval, 'Asma'),
+       (sec_Patalogia.nextval, 'Alzheimer'),
+       (sec_Patalogia.nextval, 'SIDA'),
+       (sec_Patalogia.nextval, 'Lupus'),
+       (sec_Patalogia.nextval, 'Poliomielitis'),
+       (sec_Patalogia.nextval, 'Gripe'),
+       (sec_Patalogia.nextval, 'Alzheimer'),
+       (sec_Patalogia.nextval, 'Anemia'),
+       (sec_Patalogia.nextval, 'Dengue'),
+       (sec_Patalogia.nextval, 'Amigdalitis'),
+       (sec_Patalogia.nextval, 'Sarampión'),
+       (sec_Patalogia.nextval, 'Varicela'),
+       (sec_Patalogia.nextval, 'Infección Urinaria');
+       
+/*Sintomas*/
+       
+       
+INSERT INTO Sintoma (id, nombre)
+VALUES  (sec_Sintoma.nextval, 'Fiebre'),
+        (sec_Sintoma.nextval, 'Tos seca'),
+        (sec_Sintoma.nextval, 'Cansancio'),
+        (sec_Sintoma.nextval, 'Molestia y dolores'),
+        (sec_Sintoma.nextval, 'Dolor de garganta'),
+        (sec_Sintoma.nextval, 'Diarrea'),
+        (sec_Sintoma.nextval, 'Conjuntivitis'),
+        (sec_Sintoma.nextval, 'Dolor de cabeza'),
+        (sec_Sintoma.nextval, 'Pérdida del gusto'),
+        (sec_Sintoma.nextval, 'Erupciones cutáneas'),
+        (sec_Sintoma.nextval, 'Dolor de cabeza'),
+        (sec_Sintoma.nextval, 'Dificultad para respirar'),
+        (sec_Sintoma.nextval, 'Dolor en el pecho'),
+        (sec_Sintoma.nextval, 'Incapacidad para moverse'),
+        (sec_Sintoma.nextval, 'Incapacidad para hablar');
+        
+/*Insumos*/
+
+INSERT INTO Insumo (id, nombre)
+VALUES  (sec_Insumo.nextval, 'Alcohol'),
+        (sec_Insumo.nextval, 'Tapaboca'),
+        (sec_Insumo.nextval, 'Algodón'),
+        (sec_Insumo.nextval, 'Gel desinfectante'),
+        (sec_Insumo.nextval, 'Bisturí'),
+        (sec_Insumo.nextval, 'Guantes'),
+        (sec_Insumo.nextval, 'Gasas quirúrgicas'),
+        (sec_Insumo.nextval, 'Agua oxígenada'),
+        (sec_Insumo.nextval, 'Agua potable'),
+        (sec_Insumo.nextval, 'Camilla'),
+        (sec_Insumo.nextval, 'Hilo quirúrgico'),
+        (sec_Insumo.nextval, 'Pinzas quirúrgicas'),
+        (sec_Insumo.nextval, 'Ropa de pacientes'),
+        (sec_Insumo.nextval, 'Prueba para el COVID19'),
+        (sec_Insumo.nextval, 'Termómetro digital'),
+        (sec_Insumo.nextval, 'Gorro médico');
 
 
-create sequence sec_persona
-start with 1
-increment by 1;
 
-create sequence sec_centro_atencion
-start with 1
-increment by 1;
-
-
-create sequence sec_estatus_persona
-start with 1
-increment by 1;
-
-create sequence sec_patologia_persona
-start with 1
-increment by 1;
-
-create sequence sec_sintoma_persona
-start with 1
-increment by 1;
-
-create sequence sec_viaje
-start with 1
-increment by 1;
 
 CREATE OR REPLACE PROCEDURE agregaAerolinea
 
@@ -149,7 +183,7 @@ insert into Avion (id,modelo, fecha, n_motores, fk_aerolinea) values (sec_avion,
 insert into Avion (id,modelo, fecha, n_motores, fk_aerolinea) values (sec_avion,'A340', 1985, 2, 'Caribean Airlines');
 insert into Avion (id,modelo, fecha, n_motores, fk_aerolinea) values (sec_avion,'Boeing787', 2010, 2, 'Wingo');
 
+
 /*------------------------------DROP PROCEDURES---------------------------*/
     drop procedure "AGREGAEROLINEA";
     drop procedure "AGREGAPERSONA";
-    

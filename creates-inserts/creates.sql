@@ -215,18 +215,18 @@ create table Modelo_Lugar(
 
 
 create sequence sec_Lugar
-start with 1
+start with 6
 increment by 1;
 
 create sequence sec_Patologia
 start with 1
 increment by 1;
 
-create sequence sec_Persona
+create sequence sec_persona
 start with 1
 increment by 1;
 
-create sequence sec_Patalogia_Persona
+create sequence sec_patologia_persona
 start with 1
 increment by 1;
 
@@ -234,10 +234,11 @@ create sequence sec_Sintoma
 start with 1
 increment by 1;
 
-create sequence sec_Sintoma_Persona
+create sequence sec_sintoma_persona
 start with 1
 increment by 1;
-create sequence sec_Centro_Atencion
+
+create sequence sec_centro_atencion
 start with 1
 increment by 1;
 
@@ -265,7 +266,7 @@ create sequence sec_Avion
 start with 1
 increment by 1;
 
-create sequence sec_Viaje
+create sequence sec_viaje
 start with 1
 increment by 1;
 
@@ -273,7 +274,7 @@ create sequence sec_Estatus
 start with 1
 increment by 1;
 
-create sequence sec_Estatus_Persona
+create sequence sec_estatus_persona
 start with 1
 increment by 1;
 
