@@ -6,6 +6,27 @@ create sequence sec_persona
 start with 1
 increment by 1;
 
+create sequence sec_centro_atencion
+start with 1
+increment by 1;
+
+
+create sequence sec_estatus_persona
+start with 1
+increment by 1;
+
+create sequence sec_patologia_persona
+start with 1
+increment by 1;
+
+create sequence sec_sintoma_persona
+start with 1
+increment by 1;
+
+create sequence sec_viaje
+start with 1
+increment by 1;
+
 CREATE OR REPLACE PROCEDURE agregaAerolinea
 
    (directorio IN varchar2, archivoImagen IN varchar2, nombre IN varchar2, n_flota IN number) as
