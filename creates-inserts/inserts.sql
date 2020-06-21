@@ -183,6 +183,7 @@ VALUES  (sec_Insumo.nextval, 'Alcohol'),
         (sec_Insumo.nextval, 'Gorro médico');
 
 
+
 /*--------------------------------LUGARES---------------------------------*/
 
 execute agregaImagen('IMAGE', 'usa.png', 'Estados Unidos', 'pais', 328000000);
