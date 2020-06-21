@@ -183,6 +183,7 @@ insert into Avion (id,modelo, fecha, n_motores, fk_aerolinea) values (sec_avion,
 insert into Avion (id,modelo, fecha, n_motores, fk_aerolinea) values (sec_avion,'A340', 1985, 2, 'Caribean Airlines');
 insert into Avion (id,modelo, fecha, n_motores, fk_aerolinea) values (sec_avion,'Boeing787', 2010, 2, 'Wingo');
 
+
 /*------------------------------DROP PROCEDURES---------------------------*/
     drop procedure "AGREGAEROLINEA";
     drop procedure "AGREGAPERSONA";
