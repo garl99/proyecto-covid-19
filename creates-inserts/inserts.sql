@@ -58,9 +58,6 @@ VALUES  (sec_Insumo.nextval, 'Alcohol'),
         (sec_Insumo.nextval, 'Termómetro digital'),
         (sec_Insumo.nextval, 'Gorro médico');
 
-create directory IMAGEN_DIR_AEROLINEA as 'C:\Proyecto\Aerolineas';
-create directory IMAGEN_DIR_PERSONAS as'C:\Proyecto\Personas';
-
 
 create sequence sec_persona
 start with 1
@@ -69,7 +66,6 @@ increment by 1;
 create sequence sec_centro_atencion
 start with 1
 increment by 1;
-
 
 create sequence sec_estatus_persona
 start with 1
