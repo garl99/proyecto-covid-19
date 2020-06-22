@@ -1,3 +1,5 @@
+
+
 create sequence sec_Lugar
 start with 6
 increment by 1;
@@ -81,3 +83,81 @@ increment by 1;
 create sequence sec_Modelo_Lugar
 start with 1
 increment by 1;
+
+/*---------------------------------*/
+
+drop sequence sec_Lugar;
+
+
+drop sequence sec_Patologia;
+
+
+drop sequence sec_persona;
+
+
+drop sequence sec_patologia_persona;
+
+
+drop sequence sec_Sintoma;
+
+
+drop sequence sec_sintoma_persona;
+
+
+drop sequence sec_centro_atencion;
+
+
+drop sequence sec_Insumo;
+
+
+
+drop sequence sec_Centro_Insumo;
+
+
+
+drop sequence sec_Ayuda_Humanitaria;
+
+
+
+drop sequence sec_Ayuda_Insumo;
+
+
+
+drop sequence sec_Aerolinea;
+
+
+
+drop sequence sec_Avion;
+
+
+
+drop sequence sec_viaje;
+
+
+
+drop sequence sec_Estatus;
+
+
+
+drop sequence sec_estatus_persona;
+
+
+
+drop sequence sec_Frontera;
+
+
+
+drop sequence sec_Modelo;
+
+
+
+drop sequence sec_Proveedor_Internet;
+
+
+
+drop sequence sec_Lugar_Proveedor;
+
+
+
+drop sequence sec_Modelo_Lugar;
+

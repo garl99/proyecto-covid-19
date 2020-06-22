@@ -125,62 +125,105 @@ END;
 /*Patologías*/
 
 INSERT INTO Patologia (id, nombre)
-VALUES (sec_Patalogia.nextval, 'Diabetes'),
-       (sec_Patalogia.nextval, 'Cáncer'),
-       (sec_Patalogia.nextval, 'Hipertensión'),
-       (sec_Patalogia.nextval, 'Asma'),
-       (sec_Patalogia.nextval, 'Alzheimer'),
-       (sec_Patalogia.nextval, 'SIDA'),
-       (sec_Patalogia.nextval, 'Lupus'),
-       (sec_Patalogia.nextval, 'Poliomielitis'),
-       (sec_Patalogia.nextval, 'Gripe'),
-       (sec_Patalogia.nextval, 'Alzheimer'),
-       (sec_Patalogia.nextval, 'Anemia'),
-       (sec_Patalogia.nextval, 'Dengue'),
-       (sec_Patalogia.nextval, 'Amigdalitis'),
-       (sec_Patalogia.nextval, 'Sarampión'),
-       (sec_Patalogia.nextval, 'Varicela'),
-       (sec_Patalogia.nextval, 'Infección Urinaria');
+VALUES (sec_Patologia.nextval, 'Diabetes');
+INSERT INTO Patologia (id, nombre)
+VALUES(sec_Patologia.nextval, 'Cáncer');
+INSERT INTO Patologia (id, nombre)
+VALUES(sec_Patologia.nextval, 'Hipertensión');
+INSERT INTO Patologia (id, nombre)
+VALUES (sec_Patologia.nextval, 'Asma');
+INSERT INTO Patologia (id, nombre)
+VALUES(sec_Patologia.nextval, 'Alzheimer');
+INSERT INTO Patologia (id, nombre)
+VALUES(sec_Patologia.nextval, 'SIDA');
+INSERT INTO Patologia (id, nombre)
+VALUES(sec_Patologia.nextval, 'Lupus');
+INSERT INTO Patologia (id, nombre)
+VALUES (sec_Patologia.nextval, 'Poliomielitis');
+INSERT INTO Patologia (id, nombre)
+VALUES(sec_Patologia.nextval, 'Gripe');
+INSERT INTO Patologia (id, nombre)
+VALUES(sec_Patologia.nextval, 'Alzheimer');
+INSERT INTO Patologia (id, nombre)
+VALUES(sec_Patologia.nextval, 'Anemia');
+INSERT INTO Patologia (id, nombre)
+VALUES (sec_Patologia.nextval, 'Dengue');
+INSERT INTO Patologia (id, nombre)
+VALUES (sec_Patologia.nextval, 'Amigdalitis');
+INSERT INTO Patologia (id, nombre)
+VALUES(sec_Patologia.nextval, 'Sarampión');
+INSERT INTO Patologia (id, nombre)
+VALUES (sec_Patologia.nextval, 'Varicela');
+INSERT INTO Patologia (id, nombre)
+VALUES (sec_Patologia.nextval, 'Infección Urinaria');
        
 /*Sintomas*/
        
-       
 INSERT INTO Sintoma (id, nombre)
-VALUES  (sec_Sintoma.nextval, 'Fiebre'),
-        (sec_Sintoma.nextval, 'Tos seca'),
-        (sec_Sintoma.nextval, 'Cansancio'),
-        (sec_Sintoma.nextval, 'Molestia y dolores'),
-        (sec_Sintoma.nextval, 'Dolor de garganta'),
-        (sec_Sintoma.nextval, 'Diarrea'),
-        (sec_Sintoma.nextval, 'Conjuntivitis'),
-        (sec_Sintoma.nextval, 'Dolor de cabeza'),
-        (sec_Sintoma.nextval, 'Pérdida del gusto'),
-        (sec_Sintoma.nextval, 'Erupciones cutáneas'),
-        (sec_Sintoma.nextval, 'Dolor de cabeza'),
-        (sec_Sintoma.nextval, 'Dificultad para respirar'),
-        (sec_Sintoma.nextval, 'Dolor en el pecho'),
-        (sec_Sintoma.nextval, 'Incapacidad para moverse'),
-        (sec_Sintoma.nextval, 'Incapacidad para hablar');
+VALUES (sec_Sintoma.nextval, 'Fiebre');
+        INSERT INTO Sintoma (id, nombre)
+VALUES (sec_Sintoma.nextval, 'Tos seca');
+        INSERT INTO Sintoma (id, nombre)
+VALUES (sec_Sintoma.nextval, 'Cansancio');
+        INSERT INTO Sintoma (id, nombre)
+VALUES (sec_Sintoma.nextval, 'Molestia y dolores');
+        INSERT INTO Sintoma (id, nombre)
+VALUES (sec_Sintoma.nextval, 'Dolor de garganta');
+        INSERT INTO Sintoma (id, nombre)
+VALUES (sec_Sintoma.nextval, 'Diarrea');
+        INSERT INTO Sintoma (id, nombre)
+VALUES (sec_Sintoma.nextval, 'Conjuntivitis');
+        INSERT INTO Sintoma (id, nombre)
+VALUES (sec_Sintoma.nextval, 'Dolor de cabeza');
+        INSERT INTO Sintoma (id, nombre)
+VALUES (sec_Sintoma.nextval, 'Pérdida del gusto');
+        INSERT INTO Sintoma (id, nombre)
+VALUES (sec_Sintoma.nextval, 'Erupciones cutáneas');
+        INSERT INTO Sintoma (id, nombre)
+VALUES (sec_Sintoma.nextval, 'Dolor de cabeza');
+        INSERT INTO Sintoma (id, nombre)
+VALUES (sec_Sintoma.nextval, 'Dificultad para respirar');
+        INSERT INTO Sintoma (id, nombre)
+VALUES (sec_Sintoma.nextval, 'Dolor en el pecho');
+        INSERT INTO Sintoma (id, nombre)
+VALUES (sec_Sintoma.nextval, 'Incapacidad para moverse');
+        INSERT INTO Sintoma (id, nombre)
+VALUES (sec_Sintoma.nextval, 'Incapacidad para hablar');
         
 /*Insumos*/
 
-INSERT INTO Insumo (id, nombre)
-VALUES  (sec_Insumo.nextval, 'Alcohol'),
-        (sec_Insumo.nextval, 'Tapaboca'),
-        (sec_Insumo.nextval, 'Algodón'),
-        (sec_Insumo.nextval, 'Gel desinfectante'),
-        (sec_Insumo.nextval, 'Bisturí'),
-        (sec_Insumo.nextval, 'Guantes'),
-        (sec_Insumo.nextval, 'Gasas quirúrgicas'),
-        (sec_Insumo.nextval, 'Agua oxígenada'),
-        (sec_Insumo.nextval, 'Agua potable'),
-        (sec_Insumo.nextval, 'Camilla'),
-        (sec_Insumo.nextval, 'Hilo quirúrgico'),
-        (sec_Insumo.nextval, 'Pinzas quirúrgicas'),
-        (sec_Insumo.nextval, 'Ropa de pacientes'),
-        (sec_Insumo.nextval, 'Prueba para el COVID19'),
-        (sec_Insumo.nextval, 'Termómetro digital'),
-        (sec_Insumo.nextval, 'Gorro médico');
+        INSERT INTO Insumo (id, nombre)
+VALUES (sec_Insumo.nextval, 'Alcohol');
+        INSERT INTO Insumo (id, nombre)
+VALUES (sec_Insumo.nextval, 'Tapaboca');
+        INSERT INTO Insumo (id, nombre)
+VALUES (sec_Insumo.nextval, 'Algodón');
+        INSERT INTO Insumo (id, nombre)
+VALUES (sec_Insumo.nextval, 'Gel desinfectante');
+        INSERT INTO Insumo (id, nombre)
+VALUES (sec_Insumo.nextval, 'Bisturí');
+        INSERT INTO Insumo (id, nombre)
+VALUES (sec_Insumo.nextval, 'Guantes');
+        INSERT INTO Insumo (id, nombre)
+VALUES (sec_Insumo.nextval, 'Gasas quirúrgicas');
+        INSERT INTO Insumo (id, nombre)
+VALUES (sec_Insumo.nextval, 'Agua oxígenada');
+        INSERT INTO Insumo (id, nombre)
+VALUES (sec_Insumo.nextval, 'Agua potable');
+        INSERT INTO Insumo (id, nombre)
+VALUES (sec_Insumo.nextval, 'Camilla');
+        INSERT INTO Insumo (id, nombre)
+VALUES (sec_Insumo.nextval, 'Hilo quirúrgico');
+        INSERT INTO Insumo (id, nombre)
+VALUES (sec_Insumo.nextval, 'Pinzas quirúrgicas');
+        INSERT INTO Insumo (id, nombre)
+VALUES (sec_Insumo.nextval, 'Ropa de pacientes');
+        INSERT INTO Insumo (id, nombre)
+VALUES (sec_Insumo.nextval, 'Prueba para el COVID19');
+        INSERT INTO Insumo (id, nombre)
+VALUES (sec_Insumo.nextval, 'Termómetro digital');
+        INSERT INTO Insumo (id, nombre)
+VALUES (sec_Insumo.nextval, 'Gorro médico');
 
 
 
@@ -279,22 +322,28 @@ execute agregaAerolinea ('IMAGEN_DIR_AEROLINEA','15.jpg','Wingo', 16);
 
 
 /*---------------------------Avion-------------------------------------*/
-insert into Avion (id,modelo, fecha, n_motores, fk_aerolinea) values (sec_avion,'A220', 2002, 3, 'Qatar Airways');
-insert into Avion (id,modelo, fecha, n_motores, fk_aerolinea) values (sec_avion,'700', 2005, 3, 'Copa Airlines');
-insert into Avion (id,modelo, fecha, n_motores, fk_aerolinea) values (sec_avion,'CRJ900', 2004, 2, 'Avianca');
-insert into Avion (id,modelo, fecha, n_motores, fk_aerolinea) values (sec_avion,'A320', 1994, 4, 'Air France');
-insert into Avion (id,modelo, fecha, n_motores, fk_aerolinea) values (sec_avion,'Boeing717', 1997, 3, 'AeroMexico');
-insert into Avion (id,modelo, fecha, n_motores, fk_aerolinea) values (sec_avion,'CRJ900', 1992, 3, 'American Airlines');
-insert into Avion (id,modelo, fecha, n_motores, fk_aerolinea) values (sec_avion,'A340', 2012, 4, 'Laser Airlines');
-insert into Avion (id,modelo, fecha, n_motores, fk_aerolinea) values (sec_avion,'Boeing747', 1998, 2, 'Delta Airlines');
-insert into Avion (id,modelo, fecha, n_motores, fk_aerolinea) values (sec_avion,'A320', 2004, 2, 'United Airlines');
-insert into Avion (id,modelo, fecha, n_motores, fk_aerolinea) values (sec_avion,'Boeing717', 1994, 3, 'Air Europa');
-insert into Avion (id,modelo, fecha, n_motores, fk_aerolinea) values (sec_avion,'Boeing747', 2004, 4, 'Iberia');
-insert into Avion (id,modelo, fecha, n_motores, fk_aerolinea) values (sec_avion,'A220', 2011, 3, 'Turkish Airlines');
-insert into Avion (id,modelo, fecha, n_motores, fk_aerolinea) values (sec_avion,'A350', 1991, 4, 'Plus Ultra');
-insert into Avion (id,modelo, fecha, n_motores, fk_aerolinea) values (sec_avion,'A340', 1985, 2, 'Caribean Airlines');
-insert into Avion (id,modelo, fecha, n_motores, fk_aerolinea) values (sec_avion,'Boeing787', 2010, 2, 'Wingo');
+insert into Avion (id,modelo, fecha, n_motores, fk_aerolinea) values (sec_avion.nextVal,'A220', 2002, 3, 'Qatar Airways');
+insert into Avion (id,modelo, fecha, n_motores, fk_aerolinea) values (sec_avion.nextVal,'700', 2005, 3, 'Copa Airlines');
+insert into Avion (id,modelo, fecha, n_motores, fk_aerolinea) values (sec_avion.nextVal,'CRJ900', 2004, 2, 'Avianca');
+insert into Avion (id,modelo, fecha, n_motores, fk_aerolinea) values (sec_avion.nextVal,'A320', 1994, 4, 'Air France');
+insert into Avion (id,modelo, fecha, n_motores, fk_aerolinea) values (sec_avion.nextVal,'Boeing717', 1997, 3, 'AeroMexico');
+insert into Avion (id,modelo, fecha, n_motores, fk_aerolinea) values (sec_avion.nextVal,'CRJ900', 1992, 3, 'American Airlines');
+insert into Avion (id,modelo, fecha, n_motores, fk_aerolinea) values (sec_avion.nextVal,'A340', 2012, 4, 'Laser Airlines');
+insert into Avion (id,modelo, fecha, n_motores, fk_aerolinea) values (sec_avion.nextVal,'Boeing747', 1998, 2, 'Delta Airlines');
+insert into Avion (id,modelo, fecha, n_motores, fk_aerolinea) values (sec_avion.nextVal,'A320', 2004, 2, 'United Airlines');
+insert into Avion (id,modelo, fecha, n_motores, fk_aerolinea) values (sec_avion.nextVal,'Boeing717', 1994, 3, 'Air Europa');
+insert into Avion (id,modelo, fecha, n_motores, fk_aerolinea) values (sec_avion.nextVal,'Boeing747', 2004, 4, 'Iberia');
+insert into Avion (id,modelo, fecha, n_motores, fk_aerolinea) values (sec_avion.nextVal,'A220', 2011, 3, 'Turkish Airlines');
+insert into Avion (id,modelo, fecha, n_motores, fk_aerolinea) values (sec_avion.nextVal,'A350', 1991, 4, 'Plus Ultra');
+insert into Avion (id,modelo, fecha, n_motores, fk_aerolinea) values (sec_avion.nextVal,'A340', 1985, 2, 'Caribean Airlines');
+insert into Avion (id,modelo, fecha, n_motores, fk_aerolinea) values (sec_avion.nextVal,'Boeing787', 2010, 2, 'Wingo');
 
+/*-------------------------Estatus-------------------------*/
+
+insert into Estatus(id,nombre) values (1,'saludable');
+insert into Estatus(id,nombre) values (2,'infectado');
+insert into Estatus(id,nombre) values (3,'recuperado');
+insert into Estatus(id,nombre) values (4,'fallecido');
 
 /*------------------------------DROP PROCEDURES---------------------------*/
     drop procedure "AGREGAEROLINEA";

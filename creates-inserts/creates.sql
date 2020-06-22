@@ -64,7 +64,7 @@ create table Patologia_Persona(
 
 create table Sintoma(
     id number primary key,
-    nombre varchar2(20) not null
+    nombre varchar2(50) not null
 );
 
 
@@ -93,7 +93,7 @@ create table Centro_Atencion(
 
 create table Insumo(
     id number primary key,
-    nombre varchar2(20) not null
+    nombre varchar2(50) not null
 );
 
 create table Centro_Insumo(
@@ -133,7 +133,7 @@ create table Aerolinea(
 create table Avion(
     id number primary key,
     modelo varchar2(10) not null,
-    fecha date,
+    fecha number,
     n_motores number,
     fk_aerolinea varchar2(20),
     constraint FK_fk_aerolinea foreign key (fk_aerolinea) references Aerolinea(nombre)
