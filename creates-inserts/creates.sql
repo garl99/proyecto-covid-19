@@ -186,15 +186,15 @@ create table Modelo(
 create table Proveedor_Internet(
     id number primary key,
     nombre varchar2(20) not null,
-    fecha date not null,
-    velocidad_subida float not null,
-    velocidad_bajada float not null,
-    horas_interrupcion float,
     logo BLOB
 );
 
 create table Lugar_Proveedor(
     id number primary key,
+    fecha date not null,
+    velocidad_subida float not null,
+    velocidad_bajada float not null,
+    horas_interrupcion float,
     fk_proveedor number not null,
     fk_lugar number not null,
     constraint FK_fk_proveedor foreign key (fk_proveedor) references Proveedor_Internet(id),
