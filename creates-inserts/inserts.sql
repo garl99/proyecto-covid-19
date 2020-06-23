@@ -304,12 +304,12 @@ insert into Ayuda_Humanitaria (id, fecha_donacion, cantidad_dinero, fk_pais_dona
 insert into Ayuda_Humanitaria (id, fecha_donacion, cantidad_dinero, fk_pais_donador, fk_pais_ayudado) values (sec_ayuda_humanitaria.nextval, '09/04/2020', 2174738, 7, 12);
 insert into Ayuda_Humanitaria (id, fecha_donacion, cantidad_dinero, fk_pais_donador, fk_pais_ayudado) values (sec_ayuda_humanitaria.nextval, '22/05/2020', 3112030, 7, 15);
 insert into Ayuda_Humanitaria (id, fecha_donacion, cantidad_dinero, fk_pais_donador, fk_pais_ayudado) values (sec_ayuda_humanitaria.nextval, '31/01/2020', 1549538, 6, 15);
-insert into Ayuda_Humanitaria (id, fecha_donacion, cantidad_dinero, fk_pais_donador, fk_pais_ayudado) values (1sec_ayuda_humanitaria.nextval, '24/02/2020', 1775844, 10, 15);
-insert into Ayuda_Humanitaria (id, fecha_donacion, cantidad_dinero, fk_pais_donador, fk_pais_ayudado) values (1sec_ayuda_humanitaria.nextval, '15/05/2020', 7558434, 6, 14);
-insert into Ayuda_Humanitaria (id, fecha_donacion, cantidad_dinero, fk_pais_donador, fk_pais_ayudado) values (1sec_ayuda_humanitaria.nextval, '10/01/2020', 6860927, 10, 15);
-insert into Ayuda_Humanitaria (id, fecha_donacion, cantidad_dinero, fk_pais_donador, fk_pais_ayudado) values (1sec_ayuda_humanitaria.nextval, '11/06/2020', 3640774, 10, 13);
-insert into Ayuda_Humanitaria (id, fecha_donacion, cantidad_dinero, fk_pais_donador, fk_pais_ayudado) values (1sec_ayuda_humanitaria.nextval, '04/02/2020', 2227203, 7, 11);
-insert into Ayuda_Humanitaria (id, fecha_donacion, cantidad_dinero, fk_pais_donador, fk_pais_ayudado) values (1sec_ayuda_humanitaria.nextval, '16/03/2020', 8538112, 9, 13);
+insert into Ayuda_Humanitaria (id, fecha_donacion, cantidad_dinero, fk_pais_donador, fk_pais_ayudado) values (sec_ayuda_humanitaria.nextval, '24/02/2020', 1775844, 10, 15);
+insert into Ayuda_Humanitaria (id, fecha_donacion, cantidad_dinero, fk_pais_donador, fk_pais_ayudado) values (sec_ayuda_humanitaria.nextval, '15/05/2020', 7558434, 6, 14);
+insert into Ayuda_Humanitaria (id, fecha_donacion, cantidad_dinero, fk_pais_donador, fk_pais_ayudado) values (sec_ayuda_humanitaria.nextval, '10/01/2020', 6860927, 10, 15);
+insert into Ayuda_Humanitaria (id, fecha_donacion, cantidad_dinero, fk_pais_donador, fk_pais_ayudado) values (sec_ayuda_humanitaria.nextval, '11/06/2020', 3640774, 10, 13);
+insert into Ayuda_Humanitaria (id, fecha_donacion, cantidad_dinero, fk_pais_donador, fk_pais_ayudado) values (sec_ayuda_humanitaria.nextval, '04/02/2020', 2227203, 7, 11);
+insert into Ayuda_Humanitaria (id, fecha_donacion, cantidad_dinero, fk_pais_donador, fk_pais_ayudado) values (sec_ayuda_humanitaria.nextval, '16/03/2020', 8538112, 9, 13);
 
 
 /*----------------------------Ayuda_Insumo--------------------------------*/
@@ -352,27 +352,46 @@ insert into Modelo_Lugar (id, rango_fecha,fk_lugar,fk_modelo) values (sec_modelo
 insert into Modelo_Lugar (id, rango_fecha,fk_lugar,fk_modelo) values (sec_modelo_lugar.nextval, Rango_Fecha('21/02/2020', '15/04/2020'),10,1);
 
 /*-------------------------------Frontera------------------------------------*/
-insert into Frontera (id, nombre, rango_fecha, longitud, fk_lugar) values (sec_frontera.nextval, 'Red Star-thistle', Rango_Fecha(null, null), 934, 6);
-insert into Frontera (id, nombre, rango_fecha, longitud, fk_lugar) values (sec_frontera.nextval, 'Altai Wildrye', Rango_Fecha(null, null), 139, 7);
-insert into Frontera (id, nombre, rango_fecha, longitud, fk_lugar) values (sec_frontera.nextval, 'Carolina Larkspur', Rango_Fecha(null, null), 928, 8);
-insert into Frontera (id, nombre, rango_fecha, longitud, fk_lugar) values (sec_frontera.nextval, 'Treelimb Clubmoss', Rango_Fecha(null, null), 509, 9);
-insert into Frontera (id, nombre, rango_fecha, longitud, fk_lugar) values (sec_frontera.nextval, 'Nutrush', Rango_Fecha(null, null), 103, 10);
-insert into Frontera (id, nombre, rango_fecha, longitud, fk_lugar) values (sec_frontera.nextval, 'Lined Bristle Fern', Rango_Fecha(null, null), 173, 11);
-insert into Frontera (id, nombre, rango_fecha, longitud, fk_lugar) values (sec_frontera.nextval, 'Rough Blackfoot', Rango_Fecha(null, null), 489, 12);
-insert into Frontera (id, nombre, rango_fecha, longitud, fk_lugar) values (sec_frontera.nextval, 'Fringed Star Orchid', Rango_Fecha(null, null), 804, 13);
-insert into Frontera (id, nombre, rango_fecha, longitud, fk_lugar) values (sec_frontera.nextval, 'Mountain Pride',Rango_Fecha( null, null), 900, 14);
-insert into Frontera (id, nombre, rango_fecha, longitud, fk_lugar) values (sec_frontera.nextval, 'Largepod Pinweed', Rango_Fecha(null, null), 623, 15);
-insert into Frontera (id, nombre, rango_fecha, longitud, fk_lugar) values (sec_frontera.nextval, 'Angel''s Trumpets', Rango_Fecha(null, null), 236, 6);
-insert into Frontera (id, nombre, rango_fecha, longitud, fk_lugar) values (sec_frontera.nextval, 'Greenland Brachythecium Moss', Rango_Fecha(null, null), 736, 7);
-insert into Frontera (id, nombre, rango_fecha, longitud, fk_lugar) values (sec_frontera.nextval, 'Tufted Alpine Saxifrage', Rango_Fecha(null, null), 503, 8);
-insert into Frontera (id, nombre, rango_fecha, longitud, fk_lugar) values (sec_frontera.nextval, 'Medio Bluestem',Rango_Fecha( null, null), 773, 9);
-insert into Frontera (id, nombre, rango_fecha, longitud, fk_lugar) values (sec_frontera.nextval, 'Pacific Popcornflower', Rango_Fecha(null, null), 197, 10);
+insert into Frontera (id,  rango_fecha, longitud, fk_lugar) values (sec_frontera.nextval, Rango_Fecha(null, null), 934, 6);
+insert into Frontera (id,  rango_fecha, longitud, fk_lugar) values (sec_frontera.nextval, Rango_Fecha(null, null), 139, 7);
+insert into Frontera (id,  rango_fecha, longitud, fk_lugar) values (sec_frontera.nextval, Rango_Fecha(null, null), 928, 8);
+insert into Frontera (id,  rango_fecha, longitud, fk_lugar) values (sec_frontera.nextval, Rango_Fecha(null, null), 509, 9);
+insert into Frontera (id,  rango_fecha, longitud, fk_lugar) values (sec_frontera.nextval, Rango_Fecha(null, null), 103, 10);
+insert into Frontera (id,  rango_fecha, longitud, fk_lugar) values (sec_frontera.nextval, Rango_Fecha(null, null), 173, 11);
+insert into Frontera (id,  rango_fecha, longitud, fk_lugar) values (sec_frontera.nextval, Rango_Fecha(null, null), 489, 12);
+insert into Frontera (id,  rango_fecha, longitud, fk_lugar) values (sec_frontera.nextval, Rango_Fecha(null, null), 804, 13);
+insert into Frontera (id,  rango_fecha, longitud, fk_lugar) values (sec_frontera.nextval, Rango_Fecha( null, null), 900, 14);
+insert into Frontera (id,  rango_fecha, longitud, fk_lugar) values (sec_frontera.nextval, Rango_Fecha(null, null), 623, 15);
+insert into Frontera (id,  rango_fecha, longitud, fk_lugar) values (sec_frontera.nextval, Rango_Fecha(null, null), 236, 6);
+insert into Frontera (id,  rango_fecha, longitud, fk_lugar) values (sec_frontera.nextval, Rango_Fecha(null, null), 736, 7);
+insert into Frontera (id,  rango_fecha, longitud, fk_lugar) values (sec_frontera.nextval, Rango_Fecha(null, null), 503, 8);
+insert into Frontera (id,  rango_fecha, longitud, fk_lugar) values (sec_frontera.nextval,Rango_Fecha( null, null), 773, 9);
+insert into Frontera (id,  rango_fecha, longitud, fk_lugar) values (sec_frontera.nextval, Rango_Fecha(null, null), 197, 10);
+
 
 
 
 /*----------------------Ejecutar Personas1.sql y luego Personas2.sql----------------*/
 
 /*-------------------------Ejecutar Centro_Atencion.sql-----------------------*/
+
+/*--------------------------------Centro_Insumo-------------------------------*/
+
+insert into Centro_Insumo (id, cantidad, fk_centro_atencion, fk_insumo) values (sec_centro_insumo.nextval, 97, 1, 1);
+insert into Centro_Insumo (id, cantidad, fk_centro_atencion, fk_insumo) values (sec_centro_insumo.nextval, 64, 2, 2);
+insert into Centro_Insumo (id, cantidad, fk_centro_atencion, fk_insumo) values (sec_centro_insumo.nextval, 95, 3, 3);
+insert into Centro_Insumo (id, cantidad, fk_centro_atencion, fk_insumo) values (sec_centro_insumo.nextval, 74, 4, 4);
+insert into Centro_Insumo (id, cantidad, fk_centro_atencion, fk_insumo) values (sec_centro_insumo.nextval, 53, 5, 5);
+insert into Centro_Insumo (id, cantidad, fk_centro_atencion, fk_insumo) values (sec_centro_insumo.nextval, 95, 6, 6);
+insert into Centro_Insumo (id, cantidad, fk_centro_atencion, fk_insumo) values (sec_centro_insumo.nextval, 95, 7, 7);
+insert into Centro_Insumo (id, cantidad, fk_centro_atencion, fk_insumo) values (sec_centro_insumo.nextval, 53, 8, 8);
+insert into Centro_Insumo (id, cantidad, fk_centro_atencion, fk_insumo) values (sec_centro_insumo.nextval, 98, 9, 9);
+insert into Centro_Insumo (id, cantidad, fk_centro_atencion, fk_insumo) values (sec_centro_insumo.nextval, 60, 10, 10);
+insert into Centro_Insumo (id, cantidad, fk_centro_atencion, fk_insumo) values (sec_centro_insumo.nextval, 78, 11, 11);
+insert into Centro_Insumo (id, cantidad, fk_centro_atencion, fk_insumo) values (sec_centro_insumo.nextval, 62, 12, 12);
+insert into Centro_Insumo (id, cantidad, fk_centro_atencion, fk_insumo) values (sec_centro_insumo.nextval, 70, 13, 13);
+insert into Centro_Insumo (id, cantidad, fk_centro_atencion, fk_insumo) values (sec_centro_insumo.nextval, 70, 14, 14);
+insert into Centro_Insumo (id, cantidad, fk_centro_atencion, fk_insumo) values (sec_centro_insumo.nextval, 78, 15, 15);
 
 /*-------------------------Ejecutar Estatus_Persona.sql-----------------------*/
 
