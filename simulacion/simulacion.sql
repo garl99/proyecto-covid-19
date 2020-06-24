@@ -21,34 +21,52 @@
 
 /*-------------------------------PROCEDURE QUE AÑADE SINTOMAS---------------------------------*/
 
-create or replace procedure anade_sintoma(persona_id number,fecha date) is
+create or replace procedure anade_sintoma(persona_id number,fecha date, modelo number) is
 cont3 number;
 cantidad_sintomas_a_generar number;
 sintoma_id_previo number;
 sintoma_id number;
 sintoma_id_random number;
+cantidad_sintomas number;
+numero_random number;
 
 begin
-    select sp.fk_sintoma into sintoma_id from Sintoma_Persona sp where sp.fk_persona=persona_id;
 
+    select sp.fk_sintoma into sintoma_id from Sintoma_Persona sp where sp.fk_persona=persona_id and rownum<=1; 
+    dbms_output.put_line ('P-SINTOMA-ID'||sintoma_id);
     select dbms_random.value(3,5) into cantidad_sintomas_a_generar from dual;
-
     cantidad_sintomas_a_generar:=round(cantidad_sintomas_a_generar);
+    dbms_output.put_line ('P-SINTOMAS-GENERAR'|| cantidad_sintomas_a_generar); 
 
+    select count(*) into cantidad_sintomas from Sintoma_Persona where fk_persona=persona_id;
+
+    IF modelo=1 then
+    select dbms_random.value(0,1) into numero_random from dual;
+    else
+    numero_random:=1;
+    end if;
+    dbms_output.put_line ('P-Sintoma-Num'||numero_random); 
+    IF ((cantidad_sintomas=1 OR cantidad_sintomas=0) AND numero_random>=0.8) then
+        cont3:=0;
         WHILE(cont3<cantidad_sintomas_a_generar) 
             LOOP
             sintoma_id_previo:=sintoma_id;
                 LOOP 
                     select dbms_random.value(1,15) into sintoma_id_random from dual; 
+                    sintoma_id_random:=round(sintoma_id_random);
                     EXIT WHEN (sintoma_id_random!=sintoma_id_previo);
                 END LOOP;
-                     
+
+                dbms_output.put_line ('P-SINTOMAS'); 
+                dbms_output.put_line ('P-SINTOMAS-RANDOM'||sintoma_id_random); 
+                dbms_output.put_line ('P-SINTOMAS-PERSONA'||persona_id); 
                 insert into Sintoma_Persona (id, fecha_sintoma, atencion_medica, fk_sintoma,fk_persona) 
                 values (sec_sintoma_persona.nextval,fecha,'F',sintoma_id_random,persona_id);
-                
+
                 cont3:=cont3+1;
                 sintoma_id_previo:=sintoma_id_random;
             END LOOP;
+    END IF;
 end;
 
 /*------------------------------ PROCEDIMIENTO PARA INFECTAR-------------------------------------*/
@@ -62,6 +80,7 @@ cont number;                        --un simple contador para simular la salida
 cont2 number;                       --un simple contador para simular la infeccion 
 personas_a_contagiar number;          --random para contagiar     
 cantidad_sintomas number;
+cantidad_sintomas2 number;
 estatus_id number;
 BEGIN
 
@@ -102,13 +121,17 @@ BEGIN
             select count(sp.id) into cantidad_sintomas from Sintoma_Persona sp where sp.fk_persona=persona_id;
             select ep.fk_estatus into estatus_id from Estatus_Persona ep where ep.fk_persona=persona_id;
 
+            dbms_output.put_line ('F1-cantidad_sintomas: '|| cantidad_sintomas); 
+            dbms_output.put_line ('F1-estatus_id: '|| estatus_id); 
+
             IF (cantidad_sintomas=1 AND estatus_id=1) then
 
-                anade_sintoma (persona_id,fecha);
+                anade_sintoma (persona_id,fecha,modelo);
                 select count(sp.id) into cantidad_sintomas from Sintoma_Persona sp where sp.fk_persona=persona_id;
 
             END IF;          
 
+            dbms_output.put_line ('F2-cantidad_sintomas: '|| cantidad_sintomas);  
             IF(cantidad_sintomas>=4) then       --condicion que valida si la persona que salio tiene sintomas de covid-19
                 cont2:=0;
                 while (cont2 < round(personas_a_contagiar))  --Aqui elige una persona random saludable y la infecta.
@@ -118,7 +141,7 @@ BEGIN
                         order by dbms_random.value)
                         where rownum = 1;
 
-                        anade_sintoma(persona_id,fecha);
+                        anade_sintoma(persona_id,fecha,modelo);
                         
                         dbms_output.put_line ('F-status saludable: '|| saludable_id );   
 
@@ -166,7 +189,7 @@ BEGIN
     dbms_output.put_line ('-------------INICIO DE LA SIMULACION----------');  
 
     contador_dias:=1;
-    WHILE (contador_dias<=30) --solo 30 dias pruebas
+    WHILE (contador_dias<=1) --solo 30 dias pruebas
     LOOP
 
         FOR fila in c_estados
@@ -217,3 +240,11 @@ BEGIN
     END LOOP;
 
 END;
+
+
+/*------------------------------Ejecutar Simulacion------------------------*/
+
+set serveroutput on size unlimited;
+execute simulacion(1);
+
+select count(*),fk_persona from Sintoma_Persona group by(fk_persona) having count(*)>=4 order by fk_persona ;
