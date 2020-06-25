@@ -1,5 +1,84 @@
 /*-------------------------------PROCEDURE QUE LLENA CENTRO -------------------------------*/
+create or replace procedure llenarCentros(modelo number, fecha date) is
+    cantidad_asistencia number;
+    cursor c_sintoma is select count(sp.id), sp.fk_persona, p.fk_lugar from Sintoma_Persona sp,Persona p where p.id=sp.fk_persona group by(fk_persona,fk_lugar) having count(*)>=4 order by fk_persona;
+    cont number;
+    paciente_id number;
+    estatus_id number;
+    probabilidad_tipo number;
+    centro_id number;
+    camas_totales number;
+    camas_ocupadas number;
+    fk_lugar_persona number;
+begin
 
+
+    cont:=0;
+    FOR fila in c_sintoma
+        LOOP
+            cont:=cont+1;
+        END LOOP;
+    
+    IF (modelo=1) THEN
+        cantidad_asistencia:=round(cont*0.0625);
+    ELSE
+        cantidad_asistencia:=round(cont*0.01);    
+    END IF;
+    
+    WHILE(cantidad_asistencia!=0)
+    LOOP
+
+        LOOP
+            select fk_persona into paciente_id from (
+            select count(sp.id), sp.fk_persona, p.fk_lugar 
+                from Sintoma_Persona sp,Persona p 
+                where p.id=sp.fk_persona 
+                group by(fk_persona,fk_lugar) 
+                having count(*)>=4 
+                order by dbms_random.value)
+            where ROWNUM=1;
+
+            select fk_estatus into estatus_id from Estatus_Persona where fk_persona=paciente_id;
+            EXIT WHEN (estatus_id!=2);
+        END LOOP;
+
+        select p.fk_lugar into fk_lugar_persona from Persona p where p.id=paciente_id;
+        select dbms_random.value(0,1) into probabilidad_tipo from dual;
+
+        IF (probabilidad_tipo>0.3) THEN
+            select id, nro_camas_totales,nro_camas_ocupadas into centro_id,camas_totales,camas_ocupadas from (
+            select id, nro_camas_totales,nro_camas_ocupadas from centro_atencion where fk_lugar=fk_lugar_persona and tipo='hospital' order by dbms_random.value)
+            where rownum<=1;
+        ELSE
+
+            select id, nro_camas_totales,nro_camas_ocupadas into centro_id,camas_totales,camas_ocupadas from (
+            select id, nro_camas_totales,nro_camas_ocupadas from centro_atencion where fk_lugar=fk_lugar_persona and tipo='clinica' order by dbms_random.value)
+            where rownum<=1;
+
+        END IF;
+
+        IF(camas_totales!=camas_ocupadas) THEN
+            update Estatus_Persona --Hacer trigger para matar 
+            set fk_estatus=2,fk_centro_atencion=centro_id,fecha_infeccion=fecha
+            where fk_persona=paciente_id;
+
+
+            update Centro_Atencion
+               set nro_camas_ocupadas=nro_camas_ocupadas+1
+            where id=centro_id;
+
+            update Sintoma_Persona
+                set atencion_medica='V'
+            where fk_persona=paciente_id;
+
+
+        ELSE
+            dbms_output.put_line('P-EL sistema colapso');
+        END IF;
+
+        cantidad_asistencia:=cantidad_asistencia-1;
+    END LOOP;
+end;
 
 
 
@@ -46,7 +125,7 @@ begin
     numero_random:=1;
     end if;
     dbms_output.put_line ('P-Sintoma-Num'||numero_random); 
-    IF ((cantidad_sintomas=1 OR cantidad_sintomas=0) AND numero_random>=0.8) then
+    IF ((cantidad_sintomas=1 OR cantidad_sintomas=0) AND numero_random>=0.7) then
         cont3:=0;
         WHILE(cont3<cantidad_sintomas_a_generar) 
             LOOP
@@ -205,13 +284,13 @@ BEGIN
 
                 IF (modelo=1) THEN                                                                                               
                     infectar_personas(round(cantidad_personas*0.95),fila.id,modelo,fecha);    --llamada a funcion que infecta
-                    --asistencia_centros(fila.id,fecha);
+                    llenarcentros(modelo,fecha);
                     --recuperacion(fila.id,fecha);
                     --muertes(fila.id,fecha);
 
                 ELSE IF (modelo=2) THEN  
                      infectar_personas(round(cantidad_personas*0.0625),fila.id,modelo,fecha);    --llamada a funcion que infecta
-                     --asistencia_centros(fila.id,fecha);
+                     llenarcentros(modelo,fecha);
                      --recuperacion(fila.id,fecha);
                      --muertes(fila.id,fecha);
                 END IF;
@@ -247,4 +326,5 @@ END;
 set serveroutput on size unlimited;
 execute simulacion(1);
 
-select count(*),fk_persona from Sintoma_Persona group by(fk_persona) having count(*)>=4 order by fk_persona ;
+select count(sp.id), sp.fk_persona, p.fk_lugar from Sintoma_Persona sp,Persona p where p.id=sp.fk_persona group by(fk_persona,fk_lugar) having count(*)>=4 order by fk_persona;
+
