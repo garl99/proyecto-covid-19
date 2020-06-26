@@ -15,6 +15,19 @@ create or replace type Info_Cantidad as object(
     static function calcular_porcentaje(cantidad number, n_poblacion number) return number
 );
 
+CREATE OR REPLACE TYPE BODY info_cantidad IS STATIC FUNCTION calcular_porcentaje (cantidad number, N_poblacion number) RETURN number
+IS
+resultado number; -- declaración de variables locales
+    BEGIN
+    IF (cantidad < N_poblacion) THEN
+    resultado:=(cantidad/N_poblacion)*100;
+    return resultado;
+    ELSE
+    raise_application_error(-20000,'Error en los parametros'); 
+    END IF;
+    END;
+END;
+
 create or replace type Info_Persona as object(
     primer_nombre varchar2(20),
     segundo_nombre varchar2(20),
@@ -59,7 +72,8 @@ create table Patologia_Persona(
     id number primary key,
     fk_patologia number not null,
     fk_persona number not null,
-    constraint FK_fk_patologia foreign key (fk_patologia) references Persona(id)
+    constraint FK_fk_patologia foreign key (fk_patologia) references Patologia(id),
+    constraint FK_fk_persona_patologia foreign key (fk_persona) references Persona(id)
 );
 
 

@@ -1,3 +1,60 @@
+/*-------------------------------Actualizar porcentajes---------------------------*/
+create or replace procedure actualizar_porcentajes is
+cont number;
+cont2 number;
+muertos number;
+infectados number;
+recuperados number;
+begin
+    cont:=16;
+    cont2:=6;
+
+    while (cont<=65)
+        loop
+            select count(ep.fk_persona) into infectados from Estatus_Persona ep, persona p where fk_estatus=2 and p.id=ep.fk_persona and p.fk_lugar=cont;
+            select count(ep.fk_persona) into recuperados from Estatus_Persona ep, persona p where fk_estatus=3 and p.id=ep.fk_persona and p.fk_lugar=cont;
+            select count(ep.fk_persona) into muertos from Estatus_Persona ep, persona p where fk_estatus=4 and p.id=ep.fk_persona and p.fk_lugar=cont;
+            
+            update lugar l set l.info_cantidad.porcentaje_infectados=Info_Cantidad.calcular_porcentaje(infectados,1000),
+                            l.info_cantidad.porcentaje_recuperados=Info_Cantidad.calcular_porcentaje(recuperados,1000),
+                            l.info_cantidad.porcentaje_fallecidos=Info_Cantidad.calcular_porcentaje(muertos,1000),
+                            l.info_cantidad.cantidad_fallecidos=muertos,
+                            l.info_cantidad.cantidad_infectados=infectados,
+                            l.info_cantidad.cantidad_recuperados=recuperados
+                        where l.id=cont;
+                            
+            
+            cont:=cont+1;
+        end loop;
+    
+    while (cont2<=15)
+        loop
+            select count(*) into infectados from Estatus_Persona ep, persona p, lugar l
+            where fk_estatus=2 and p.id=ep.fk_persona and l.id=p.fk_lugar and l.fk_lugar=cont2;
+
+            select count(*) into recuperados from Estatus_Persona ep, persona p, lugar l
+            where fk_estatus=3 and p.id=ep.fk_persona and l.id=p.fk_lugar and l.fk_lugar=cont2;
+
+            select count(*) into muertos from Estatus_Persona ep, persona p, lugar l
+            where fk_estatus=4 and p.id=ep.fk_persona and l.id=p.fk_lugar and l.fk_lugar=cont2;
+
+
+            update lugar l set l.info_cantidad.porcentaje_infectados=Info_Cantidad.calcular_porcentaje(infectados,1000),
+                            l.info_cantidad.porcentaje_recuperados=Info_Cantidad.calcular_porcentaje(recuperados,1000),
+                            l.info_cantidad.porcentaje_fallecidos=Info_Cantidad.calcular_porcentaje(muertos,1000),
+                            l.info_cantidad.cantidad_fallecidos=muertos,
+                            l.info_cantidad.cantidad_infectados=infectados,
+                            l.info_cantidad.cantidad_recuperados=recuperados
+                            where l.id=cont2;
+
+            cont2:=cont2+1; 
+        end loop;
+
+end;
+
+
+
+
 /*-------------------------------------Muertes-------------------------------------*/
 create or replace function muertes(lugar_id number, fecha date, modelo number) return boolean is
 cantidad_muertes1 number;
@@ -625,6 +682,8 @@ BEGIN
     fecha:=fecha+1;
     END LOOP;
 
+    actualizar_porcentajes();
+
 END;
 
 
@@ -644,7 +703,13 @@ select * from Estatus_Persona where fk_estatus=2;
 select  count(*) from viaje;
 select count(*),fk_pasajero from viaje group by fk_pasajero;
 
-
+select  l.info_cantidad.cantidad_infectados,
+        l.info_cantidad.cantidad_recuperados,
+        l.info_cantidad.cantidad_fallecidos,
+        l.info_cantidad.porcentaje_infectados,
+        l.info_cantidad.porcentaje_recuperados,
+        l.info_cantidad.porcentaje_fallecidos
+where id=6;
 
 ------------------------------------------------------------------------
 
