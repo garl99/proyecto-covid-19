@@ -1,3 +1,137 @@
+/*-------------------------------------Muertes-------------------------------------*/
+create or replace function muertes(lugar_id number, fecha date, modelo number) return boolean is
+cantidad_muertes1 number;
+cantidad_muertes2 number;
+centro_id number;
+cantidad_infectados number;
+muerte_id number;
+cantidad_patologias number;
+numero_random number;
+dias number;
+rango number;
+begin
+
+    if(modelo=1)then
+        rango:=0.8;
+    else
+        rango:=0.95;
+    end if;
+
+    select count(fk_persona) into cantidad_infectados from(select count(sp.id), sp.fk_persona, p.fk_lugar, ep.fk_estatus 
+    from Sintoma_Persona sp,Persona p, Estatus_Persona ep 
+    where p.id=sp.fk_persona and ep.fk_persona=p.id and ep.fk_estatus!=4 and ep.fk_estatus!=3 and p.fk_lugar=lugar_id
+    group by(sp.fk_persona,p.fk_lugar,ep.fk_estatus) 
+    having count(*)>=4 
+    order by fk_persona);
+
+    cantidad_muertes1:=round((cantidad_infectados*(1/3))/2);
+    cantidad_muertes2:=round((cantidad_infectados*(1/6))/2);
+   
+    IF (cantidad_infectados!=0) then 
+
+        While(cantidad_muertes1!=0)
+        loop
+                select fk_persona into muerte_id from (select count(sp.id), sp.fk_persona, p.fk_lugar, ep.fk_estatus 
+                from Sintoma_Persona sp,Persona p, Estatus_Persona ep 
+                where p.id=sp.fk_persona and ep.fk_persona=p.id and ep.fk_estatus!=4 and ep.fk_estatus!=3 and p.fk_lugar=lugar_id
+                group by(sp.fk_persona,p.fk_lugar,ep.fk_estatus) 
+                having count(*)>=4 
+                order by dbms_random.value)
+                where rownum<=1;
+                
+                exit when (muerte_id is null);
+
+                select ep.fk_centro_atencion into centro_id
+                    from Estatus_Persona ep
+                    where ep.fk_persona=muerte_id;
+                
+                select count(*) into cantidad_patologias from Patologia_Persona where fk_persona=muerte_id;
+
+                if (cantidad_patologias>=3) then
+                dias:=2;
+                else
+                dias:=8;
+                end if;
+
+                select dbms_random.value(0,1) into numero_random from dual;
+
+                IF (numero_random>rango) then
+                    if (centro_id is null) then
+                        update Estatus_Persona
+                        set fk_estatus=4,fecha_fallecimiento=fecha+dias
+                        where fk_persona=muerte_id;
+                    else
+                        update Estatus_Persona
+                        set fk_estatus=4,fecha_fallecimiento=fecha_infeccion+dias
+                        where fk_persona=muerte_id;
+
+                        update Centro_Atencion
+                        set nro_camas_ocupadas=nro_camas_ocupadas-1
+                        where id=centro_id; 
+                    end if;
+                end if;
+                cantidad_muertes1:=cantidad_muertes1-1;
+        end loop;
+
+        While(cantidad_muertes2!=0)
+        loop
+
+                select fk_persona into muerte_id from (select count(sp.id), sp.fk_persona, p.fk_lugar, ep.fk_estatus 
+                from Sintoma_Persona sp,Persona p, Estatus_Persona ep 
+                where p.id=sp.fk_persona and ep.fk_persona=p.id and ep.fk_estatus!=4 and ep.fk_estatus!=3 and p.fk_lugar=lugar_id
+                group by(sp.fk_persona,p.fk_lugar,ep.fk_estatus) 
+                having count(*)>=4 
+                order by dbms_random.value)
+                where rownum<=1;
+                
+                exit when (muerte_id is null);
+
+ 
+                select ep.fk_centro_atencion into centro_id
+                from Estatus_Persona ep
+                where ep.fk_persona=muerte_id;
+
+                select count(*) into cantidad_patologias from Patologia_Persona where fk_persona=muerte_id;
+
+                if (cantidad_patologias>=3) then
+                dias:=2;
+                else
+                dias:=3;
+                end if;
+
+                select dbms_random.value(0,1) into numero_random from dual;
+
+                IF (numero_random>0.8) then
+
+                    if (centro_id is null) then
+                        update Estatus_Persona
+                        set fk_estatus=4,fecha_fallecimiento=fecha+dias
+                        where fk_persona=muerte_id;
+                    else
+                        update Estatus_Persona
+                        set fk_estatus=4,fecha_fallecimiento=fecha_infeccion+dias
+                        where fk_persona=muerte_id;
+
+                        update Centro_Atencion
+                        set nro_camas_ocupadas=nro_camas_ocupadas-1
+                        where id=centro_id; 
+                    end if;
+
+                end if;
+
+                cantidad_muertes2:=cantidad_muertes2-1;
+        end loop;
+
+    end if;
+    return true;
+
+    exception
+      when no_data_found then
+        return false; 
+       
+end;
+
+
 /*-------------------------------------Recuperacion----------------------------------------*/
 create or replace function recuperacion(lugar_id number, fecha date) return boolean is
 cantidad_recuperacion number;
@@ -6,14 +140,15 @@ caso1 number;
 caso2 number;
 persona_id number;
 centro_id number;
+numero_random number;
 
 begin
 
     select count(*) into cantidad_recuperacion from Estatus_Persona ep, Persona p
     where ep.fk_persona=p.id and p.fk_lugar=lugar_id and ep.fk_estatus=2;
 
-    caso1:=round(cantidad_recuperacion*0.125);
-    caso2:=round(cantidad_recuperacion*0.375);
+    caso1:=round((cantidad_recuperacion*0.125)/2);
+    caso2:=round((cantidad_recuperacion*0.375)/2);
 
     IF (cantidad_recuperacion!=0) then
 
@@ -25,13 +160,17 @@ begin
                     where ep.fk_estatus=2 and ep.fk_persona=p.id and p.fk_lugar=lugar_id order by dbms_random.value ) 
                     where rownum=1;
 
-             update Estatus_Persona
-                set fk_estatus=3,fecha_recuperacion=fecha+7
-              where fk_persona=persona_id;
+            select dbms_random.value(0,1) into numero_random from dual;
+            
+            IF(numero_random>0.6) then
+                update Estatus_Persona
+                    set fk_estatus=3,fecha_recuperacion=fecha+7
+                where fk_persona=persona_id;
 
-             update Centro_Atencion
-                set nro_camas_ocupadas=nro_camas_ocupadas-1
-              where id=centro_id;
+                update Centro_Atencion
+                    set nro_camas_ocupadas=nro_camas_ocupadas-1
+                where id=centro_id;
+            end if;
 
           caso1:=caso1-1;
         end loop;
@@ -44,6 +183,9 @@ begin
                     where ep.fk_estatus=2 and ep.fk_persona=p.id and p.fk_lugar=lugar_id order by dbms_random.value ) 
                     where rownum=1;
           
+            select dbms_random.value(0,1) into numero_random from dual;
+            
+            IF(numero_random>0.6) then
               update Estatus_Persona
                 set fk_estatus=3,fecha_recuperacion=fecha+2
               where fk_persona=persona_id;
@@ -51,20 +193,16 @@ begin
              update Centro_Atencion
                 set nro_camas_ocupadas=nro_camas_ocupadas-1
               where id=centro_id;
+            end if;
               
            caso2:=caso2-1;
         end loop;
 
-
-    
     end if;
     return true;
 
     exception
       when no_data_found then
-            update Estatus_Persona
-            set fk_estatus=2
-            where fk_estatus=2 and fecha_recuperacion is not null;
         return false;
 end;
 
@@ -394,7 +532,7 @@ END;
 /*------------------------------3.PRINCIPAL STORED PROCEDURE-----------------------------------*/
 
 
-Create or replace procedure simulacion (modelo number) 
+create or replace procedure simulacion (modelo number) 
 is
 cantidad_infectados number;                              --cantidad de infectados despues de simular
 cantidad_infectados2 number;                             --cantidad de infectados antes de simular
@@ -404,6 +542,7 @@ contador_dias number;
 nuevos_casos number;
 fecha date;
 flag_recuperacion boolean;
+flag_muertes boolean;
 dia_recuperacion number;
 
 
@@ -428,7 +567,7 @@ BEGIN
     dbms_output.put_line ('-------------INICIO DE LA SIMULACION----------');  
 
     contador_dias:=1;
-    WHILE (contador_dias<=1) --solo 30 dias pruebas
+    WHILE (contador_dias<=3) --solo 30 dias pruebas
     LOOP
 
         FOR fila in c_estados
@@ -446,21 +585,21 @@ BEGIN
                     infectar_personas(round(cantidad_personas*0.95),fila.id,modelo,fecha);    --llamada a funcion que infecta
                     llenarcentros(modelo,fila.id,fecha);
                     viajes(modelo,fila.id,fecha);
-                                        
+                    
                     if(contador_dias=2) then
-                     flag_recuperacion:= recuperacion(fila.id,fecha);
+                     flag_recuperacion:= recuperacion(fila.id,fecha,modelo);
                     end if;
-                    --muertes(fila.id,fecha);
+                    flag_muertes:=muertes(fila.id,fecha);
 
                 ELSE IF (modelo=2) THEN  
                      infectar_personas(round(cantidad_personas*0.0625),fila.id,modelo,fecha);    --llamada a funcion que infecta
                      llenarcentros(modelo,fila.id,fecha);
                      viajes(modelo,fila.id,fecha);
-                                         
+                    
                     if(contador_dias=2) then
                      flag_recuperacion:= recuperacion(fila.id,fecha);
                     end if;
-                     --muertes(fila.id,fecha);
+                     flag_muertes:=muertes(fila.id,fecha,modelo);
                 END IF;
                 END IF;
 
@@ -498,9 +637,21 @@ select count(sp.id), sp.fk_persona, p.fk_lugar from Sintoma_Persona sp,Persona p
 
 select * from centro_atencion;
 select SUM(nro_camas_ocupadas) from centro_atencion;
-select count(*) from Estatus_Persona where fk_estatus=2;
+select count(*) from Estatus_Persona where fk_estatus=3;
 
 select * from Estatus_Persona where fk_estatus=2;
 
-select * from viaje;
+select  count(*) from viaje;
 select count(*),fk_pasajero from viaje group by fk_pasajero;
+
+
+
+------------------------------------------------------------------------
+
+
+update centro_atencion set nro_camas_ocupadas=0;
+delete from viaje;
+delete from sintoma_persona;
+update Estatus_Persona set fk_centro_atencion=null,fecha_fallecimiento=null,fecha_infeccion=null,fecha_recuperacion=null,fk_estatus=1;
+
+
