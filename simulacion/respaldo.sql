@@ -1,76 +1,3 @@
-/*-------------------------------------Recuperacion----------------------------------------*/
-create or replace function recuperacion(lugar_id number, fecha date) return boolean is
-cantidad_recuperacion number;
-dias number;
-caso1 number;
-caso2 number;
-persona_id number;
-centro_id number;
-
-begin
-
-    select count(*) into cantidad_recuperacion from Estatus_Persona ep, Persona p
-    where ep.fk_persona=p.id and p.fk_lugar=lugar_id and ep.fk_estatus=2;
-
-    caso1:=round(cantidad_recuperacion*0.125);
-    caso2:=round(cantidad_recuperacion*0.375);
-
-    IF (cantidad_recuperacion!=0) then
-
-        While (caso1!=0) 
-        loop
-             select fk_persona,fk_centro_atencion into persona_id, centro_id
-             from (select ep.fk_persona,ep.fk_centro_atencion
-                    from Estatus_Persona ep, Persona p 
-                    where ep.fk_estatus=2 and ep.fk_persona=p.id and p.fk_lugar=lugar_id order by dbms_random.value ) 
-                    where rownum=1;
-
-             update Estatus_Persona
-                set fk_estatus=3,fecha_recuperacion=fecha+7
-              where fk_persona=persona_id;
-
-             update Centro_Atencion
-                set nro_camas_ocupadas=nro_camas_ocupadas-1
-              where id=centro_id;
-
-          caso1:=caso1-1;
-        end loop;
-
-        While (caso2!=0) 
-        loop
-            select fk_persona,fk_centro_atencion into persona_id, centro_id
-             from (select ep.fk_persona,ep.fk_centro_atencion
-                    from Estatus_Persona ep, Persona p 
-                    where ep.fk_estatus=2 and ep.fk_persona=p.id and p.fk_lugar=lugar_id order by dbms_random.value ) 
-                    where rownum=1;
-          
-              update Estatus_Persona
-                set fk_estatus=3,fecha_recuperacion=fecha+2
-              where fk_persona=persona_id;
-
-             update Centro_Atencion
-                set nro_camas_ocupadas=nro_camas_ocupadas-1
-              where id=centro_id;
-              
-           caso2:=caso2-1;
-        end loop;
-
-
-    
-    end if;
-    return true;
-
-    exception
-      when no_data_found then
-            update Estatus_Persona
-            set fk_estatus=2
-            where fk_estatus=2 and fecha_recuperacion is not null;
-        return false;
-end;
-
-
-
-
 /*-------------------------------PROCEDURE QUE LLENA CENTRO -------------------------------*/
 create or replace procedure llenarCentros(modelo number, lugar_id number, fecha date) is
     cantidad_asistencia number;
@@ -85,7 +12,6 @@ create or replace procedure llenarCentros(modelo number, lugar_id number, fecha 
     fk_lugar_persona number;
     cantidad_estatus1 number;
 begin
-
 
     cont:=0;
     FOR fila in c_sintoma
@@ -165,93 +91,102 @@ end;
 
 
 
-
-
-/*-------------------------------PROCEDURE GENERA VIAJES-------------------------------------*/
-create or replace procedure viajes(modelo number, lugar_id number, fecha date) is
-cantidad_viajeros number;
-cursor c_sintoma is select count(sp.id), sp.fk_persona, p.fk_lugar from Sintoma_Persona sp,Persona p where p.id=sp.fk_persona and p.fk_lugar=lugar_id group by(fk_persona,fk_lugar) having count(*)>=4 order by fk_persona;
-cont number;
-estatus_id number;
-cantidad_estatus1 number;
-persona_id number;
-lugar_origen number;
-lugar_destino number;
-avion_id number;
-pasajero_id number;
+/*-------------------------------PROCEDURE QUE LLENA CENTRO -------------------------------*/
+create or replace procedure llenarCentros(modelo number, fecha date) is
+    cantidad_asistencia number;
+    cursor c_sintoma is select count(sp.id), sp.fk_persona, p.fk_lugar from Sintoma_Persona sp,Persona p where p.id=sp.fk_persona group by(fk_persona,fk_lugar) having count(*)>=4 order by fk_persona;
+    cont number;
+    paciente_id number;
+    estatus_id number;
+    probabilidad_tipo number;
+    centro_id number;
+    camas_totales number;
+    camas_ocupadas number;
+    fk_lugar_persona number;
 begin
+
 
     cont:=0;
     FOR fila in c_sintoma
         LOOP
-        cont:=cont+1;
+            cont:=cont+1;
+        END LOOP;
+    
+    IF (modelo=1) THEN
+        cantidad_asistencia:=round(cont*0.0625);
+    ELSE
+        cantidad_asistencia:=round(cont*0.01);    
+    END IF;
+    
+    WHILE(cantidad_asistencia!=0)
+    LOOP
+
+        LOOP
+            select fk_persona into paciente_id from (
+            select count(sp.id), sp.fk_persona, p.fk_lugar 
+                from Sintoma_Persona sp,Persona p 
+                where p.id=sp.fk_persona 
+                group by(fk_persona,fk_lugar) 
+                having count(*)>=4 
+                order by dbms_random.value)
+            where ROWNUM=1;
+
+            select fk_estatus into estatus_id from Estatus_Persona where fk_persona=paciente_id;
+            EXIT WHEN (estatus_id!=2);
+        END LOOP;
+
+        select p.fk_lugar into fk_lugar_persona from Persona p where p.id=paciente_id;
+        select dbms_random.value(0,1) into probabilidad_tipo from dual;
+
+        IF (probabilidad_tipo>0.3) THEN
+            select id, nro_camas_totales,nro_camas_ocupadas into centro_id,camas_totales,camas_ocupadas from (
+            select id, nro_camas_totales,nro_camas_ocupadas from centro_atencion where fk_lugar=fk_lugar_persona and tipo='hospital' order by dbms_random.value)
+            where rownum<=1;
+        ELSE
+
+            select id, nro_camas_totales,nro_camas_ocupadas into centro_id,camas_totales,camas_ocupadas from (
+            select id, nro_camas_totales,nro_camas_ocupadas from centro_atencion where fk_lugar=fk_lugar_persona and tipo='clinica' order by dbms_random.value)
+            where rownum<=1;
+
+        END IF;
+
+        IF(camas_totales!=camas_ocupadas) THEN
+            update Estatus_Persona --Hacer trigger para matar 
+            set fk_estatus=2,fk_centro_atencion=centro_id,fecha_infeccion=fecha
+            where fk_persona=paciente_id;
+
+
+            update Centro_Atencion
+               set nro_camas_ocupadas=nro_camas_ocupadas+1
+            where id=centro_id;
+
+            update Sintoma_Persona
+                set atencion_medica='V'
+            where fk_persona=paciente_id;
+
+
+        ELSE
+            dbms_output.put_line('P-EL sistema colapso');
+        END IF;
+
+        cantidad_asistencia:=cantidad_asistencia-1;
     END LOOP;
-
-    if(modelo=1) then
-        cantidad_viajeros:=round(cont*0.20);
-    else
-        cantidad_viajeros:=round(cont*0.01);
-    end if;
-
-    if(Rango_Fecha.validar_fecha_viajes(lugar_id))then
-        While (cantidad_viajeros!=0) 
-        loop
-            LOOP
-                select fk_persona, fk_lugar into persona_id, lugar_origen from (
-                select count(sp.id), sp.fk_persona, p.fk_lugar 
-                    from Sintoma_Persona sp,Persona p 
-                    where p.id=sp.fk_persona and p.fk_lugar=lugar_id
-                    group by(fk_persona,fk_lugar) 
-                    having count(*)>=4 
-                    order by dbms_random.value)
-                where ROWNUM=1;
-
-                select fk_estatus into estatus_id from Estatus_Persona where fk_persona=persona_id;
-                select count(*) into cantidad_estatus1 from Estatus_Persona where fk_estatus=1;
-                EXIT WHEN (estatus_id=1 OR cantidad_estatus1=0);
-            END LOOP;
-
-            IF(cantidad_estatus1!=0) then
-
-                LOOP
-                    select dbms_random.value(16,20) into lugar_destino from dual; --CAMBIAR DE 16,65 PARA SIMULACION COMPLETA
-                    lugar_destino:=round(lugar_destino);
-                    EXIT WHEN(lugar_destino!=lugar_origen);
-                END LOOP;
-
-                if (Rango_Fecha.validar_fecha_viajes(lugar_destino))  then
-                
-                    select id_pasajero into pasajero_id from Persona where id=persona_id;
-
-                    if (pasajero_id is null) then
-                        select dbms_random.value(1,9999999) into pasajero_id from dual;
-                        pasajero_id:=round(pasajero_id);
-                        update Persona
-                        set id_pasajero=pasajero_id
-                        where id=persona_id;
-                    end if;
-
-                    select dbms_random.value(1,15) into avion_id from dual;
-                    avion_id:=round(avion_id);
-                    infectar_personas(1,lugar_destino,modelo,fecha);
-                    insert into Viaje (id, fecha_inicio, fk_pasajero, fk_origen, fk_destino, fk_avion) values (sec_viaje.nextval, TO_DATE(fecha,'DD/MM/YYYY'),pasajero_id, lugar_origen,lugar_destino,avion_id);
-                    
-                else
-                    dbms_output.put_line ('P-Fronteras y vuelos cerrados en pais destino'); 
-                end if;
-
-            else
-                dbms_output.put_line('P-Infeccion total en en el lugar');
-                cantidad_viajeros:=0;    
-            end if;
-            
-          cantidad_viajeros:=cantidad_viajeros-1;      
-        end loop;
-    else
-        dbms_output.put_line ('P-Fronteras y vuelos cerrados en pais origen'); 
-    end if;
-
 end;
+
+
+
+
+
+/*-------------------------------PROCEDURE GENERA MUERTES-------------------------------------*/
+
+
+
+
+
+
+/*-------------------------------PROCEDURE GENERA RECUPERACIONES------------------------------*/
+
+
 
 
 
@@ -265,6 +200,7 @@ sintoma_id_previo number;
 sintoma_id number;
 sintoma_id_random number;
 cantidad_sintomas number;
+numero_random number;
 
 begin
 
@@ -276,8 +212,13 @@ begin
 
     select count(*) into cantidad_sintomas from Sintoma_Persona where fk_persona=persona_id;
 
-
-    IF ((cantidad_sintomas=1 OR cantidad_sintomas=0)) then
+    IF modelo=1 then
+    select dbms_random.value(0,1) into numero_random from dual;
+    else
+    numero_random:=1;
+    end if;
+    dbms_output.put_line ('P-Sintoma-Num'||numero_random); 
+    IF ((cantidad_sintomas=1 OR cantidad_sintomas=0) AND numero_random>=0.7) then
         cont3:=0;
         WHILE(cont3<cantidad_sintomas_a_generar) 
             LOOP
@@ -342,14 +283,14 @@ BEGIN
         
             select id into persona_id from                --Elegimos una persona random que sale de su hogar
             (select p.id from Persona p, Estatus_Persona ep
-            where p.fk_lugar=lugar_id AND ep.fk_persona=p.id AND ep.fk_estatus=1 
+            where p.fk_lugar=lugar_id AND ep.fk_persona=p.id AND ep.fk_estatus!=3 AND ep.fk_estatus!=4  
             order by dbms_random.value )
             where rownum = 1;
 
 
             dbms_output.put_line ('F-Persona que sale: '|| persona_id);   
 
-            select count(sp.id) into cantidad_sintomas from Sintoma_Persona sp where sp.fk_persona=persona_id; --Añadir esto al TDA
+            select count(sp.id) into cantidad_sintomas from Sintoma_Persona sp where sp.fk_persona=persona_id;
             select ep.fk_estatus into estatus_id from Estatus_Persona ep where ep.fk_persona=persona_id;
 
             dbms_output.put_line ('F1-cantidad_sintomas: '|| cantidad_sintomas); 
@@ -358,7 +299,7 @@ BEGIN
             IF (cantidad_sintomas=1 AND estatus_id=1) then
 
                 anade_sintoma (persona_id,fecha,modelo);
-                select count(sp.id) into cantidad_sintomas from Sintoma_Persona sp where sp.fk_persona=persona_id; --Añadir esto al TDA
+                select count(sp.id) into cantidad_sintomas from Sintoma_Persona sp where sp.fk_persona=persona_id;
 
             END IF;          
 
@@ -372,11 +313,7 @@ BEGIN
                         order by dbms_random.value)
                         where rownum = 1;
 
-                        select count(sp.id) into cantidad_sintomas2 from Sintoma_Persona sp where sp.fk_persona=saludable_id; --Añadir esto al TDA
-
-                        IF (cantidad_sintomas2=1) then
-                            anade_sintoma (saludable_id,fecha,modelo);
-                        END IF; 
+                        anade_sintoma(persona_id,fecha,modelo);
                         
                         dbms_output.put_line ('F-status saludable: '|| saludable_id );   
 
@@ -403,9 +340,6 @@ dias number;
 contador_dias number;
 nuevos_casos number;
 fecha date;
-flag_recuperacion boolean;
-dia_recuperacion number;
-
 
 cursor c_estados is select * from Lugar where tipo='estado' order by id;
 
@@ -423,7 +357,6 @@ BEGIN
 
     select dbms_random.value(30,60) into dias from dual;
     dias:=round(dias);
-    dia_recuperacion:=round(dias*0.6);
 
     dbms_output.put_line ('-------------INICIO DE LA SIMULACION----------');  
 
@@ -444,22 +377,14 @@ BEGIN
 
                 IF (modelo=1) THEN                                                                                               
                     infectar_personas(round(cantidad_personas*0.95),fila.id,modelo,fecha);    --llamada a funcion que infecta
-                    llenarcentros(modelo,fila.id,fecha);
-                    viajes(modelo,fila.id,fecha);
-                                        
-                    if(contador_dias=2) then
-                     flag_recuperacion:= recuperacion(fila.id,fecha);
-                    end if;
+                    llenarcentros(modelo,fecha);
+                    --recuperacion(fila.id,fecha);
                     --muertes(fila.id,fecha);
 
                 ELSE IF (modelo=2) THEN  
                      infectar_personas(round(cantidad_personas*0.0625),fila.id,modelo,fecha);    --llamada a funcion que infecta
-                     llenarcentros(modelo,fila.id,fecha);
-                     viajes(modelo,fila.id,fecha);
-                                         
-                    if(contador_dias=2) then
-                     flag_recuperacion:= recuperacion(fila.id,fecha);
-                    end if;
+                     llenarcentros(modelo,fecha);
+                     --recuperacion(fila.id,fecha);
                      --muertes(fila.id,fecha);
                 END IF;
                 END IF;
@@ -495,12 +420,3 @@ set serveroutput on size unlimited;
 execute simulacion(1);
 
 select count(sp.id), sp.fk_persona, p.fk_lugar from Sintoma_Persona sp,Persona p where p.id=sp.fk_persona group by(fk_persona,fk_lugar) having count(*)>=4 order by fk_persona;
-
-select * from centro_atencion;
-select SUM(nro_camas_ocupadas) from centro_atencion;
-select count(*) from Estatus_Persona where fk_estatus=2;
-
-select * from Estatus_Persona where fk_estatus=2;
-
-select * from viaje;
-select count(*),fk_pasajero from viaje group by fk_pasajero;

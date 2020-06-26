@@ -2,6 +2,7 @@ create or replace type Rango_Fecha as object(
     fecha_inicio date,
     fecha_final date,
     static function validar_fecha(fecha_inicio date, fecha_final date) return boolean
+    static function validar_fecha_viaje(lugar_id number) return boolean --valida si es posible viajar (Fronteras abiertas y vuelos permitidos)
 );
 
 create or replace type Info_Cantidad as object(
