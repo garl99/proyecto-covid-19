@@ -118,6 +118,9 @@ saludable_id number;
 porcentaje_sintomas number;
 cantidad_sintomas_a_generar number;
 sintomas number;
+contador number;
+--fecha_registro date;
+--valor_random number;
 begin
 
     if (modelo=1)then
@@ -127,7 +130,7 @@ begin
 
     end if;
 
-
+    contador:=0;
     personas_a_contagiar:=round(personas_a_contagiar);
 
     WHILE (personas_a_contagiar!=0)
@@ -147,16 +150,21 @@ begin
                     set fk_estatus=2,fk_centro_atencion=null,fecha_infeccion=fecha
                     where fk_persona=saludable_id;
                     anade_sintomas(saludable_id,fecha,4);
+                    contador:=contador+1;
                 else
                     select dbms_random.value(1,5) into cantidad_sintomas_a_generar from dual;
                     cantidad_sintomas_a_generar:=round(cantidad_sintomas_a_generar);
                     anade_sintomas(saludable_id,fecha,cantidad_sintomas_a_generar);
     
                 end if;
-            end if;
+            end if;          
+
             personas_a_contagiar:=personas_a_contagiar-1;
     end loop;
-
+    
+    --dbms_output.put_line('FECHA= '||fecha ||' ,INFECTADOS= '||contador);
+    actualizar_registro(lugar_id,contador,fecha);
+    
     return true;
 
     exception
@@ -164,7 +172,6 @@ begin
         return false;
 
 end;
-
 
 
 /*--------------------------------Recuperar Lugar-----------------------------------------*/
@@ -254,15 +261,12 @@ begin
     select count(*) into cantidad_asistencia from Estatus_Persona ep, Persona p, lugar l, lugar u
     where ep.fk_persona=p.id and p.fk_lugar=l.id and l.fk_lugar=u.id and u.id=lugar_id and ep.fk_estatus=2;
     
-    DBMS_OUTPUT.PUT_LINE('CANTIDAD LLENAR CENTROS 1='||cantidad_asistencia);
-    DBMS_OUTPUT.PUT_LINE('Lugar 1='|| lugar_id);
-    IF (modelo=1) THEN
-        cantidad_asistencia:=round(cantidad_asistencia *0.6);
-        DBMS_OUTPUT.PUT_LINE('CANTIDAD LLENAR CENTROS 2='||cantidad_asistencia);
-    ELSE
-        cantidad_asistencia:=round(cantidad_asistencia *0.3);    
-    END IF;
 
+    IF (modelo=1) THEN
+        cantidad_asistencia:=round(cantidad_asistencia *0.4);
+    ELSE
+        cantidad_asistencia:=round(cantidad_asistencia *0.15);    
+    END IF;
 
     WHILE(cantidad_asistencia!=0)
     LOOP
@@ -294,6 +298,7 @@ begin
                 update Sintoma_Persona
                     set atencion_medica='V'
                 where fk_persona=paciente_id;
+                dbms_output.put_line('P-EL sistema NO colapso');
 
             ELSE
                 dbms_output.put_line('P-EL sistema colapso');
@@ -330,7 +335,7 @@ begin
     having count(*)>=4 
     order by fk_persona);
 
-    cantidad_infectados:=round((cantidad_infectados*(1/3)))+round((cantidad_infectados*(1/6)));
+    cantidad_infectados:=round((cantidad_infectados*(1/3))/4)+round((cantidad_infectados*(1/6))/6);
 
 
         While(cantidad_infectados!=0)
@@ -414,9 +419,9 @@ begin
     order by fk_persona);
 
     if(modelo=1) then
-        cantidad_viajeros:=round(cantidad_viajeros*0.20);
+        cantidad_viajeros:=round(cantidad_viajeros*0.15);
     else
-        cantidad_viajeros:=round(cantidad_viajeros*0.10);
+        cantidad_viajeros:=round(cantidad_viajeros*0);
     end if;
 
     if(true)then
@@ -476,3 +481,53 @@ begin
 
 
 end;
+
+
+/*---------------------------AÑADE PROGRESO DE INFECCION------------------------------*/
+
+
+create or replace procedure actualizar_registro (lugar_id number, contador number, fecha date) is
+fecha_registro date;
+begin
+     if(contador!=0) then
+            select r.fecha_registro into fecha_registro from Registro r where r.fecha_registro=fecha and r.fk_lugar=lugar_id;
+
+            update registro set cantidad_infectados=cantidad_infectados+contador
+            where fecha_registro=fecha and fk_lugar=lugar_id;        
+    end if;
+
+    exception
+      when no_data_found then        
+        insert into Registro(id,fecha_registro,cantidad_infectados,fk_lugar) 
+        values(sec_registro.nextval,fecha,contador,lugar_id);
+end;
+
+
+/*--------------------------------DISMINUIR INVENTARIO--------------------------------*/
+
+create or replace trigger disminuir_inventario
+before update on Estatus_Persona
+for each row
+declare
+centro_id number;
+begin
+    if(:old.fk_estatus=2 and :new.fk_centro_atencion is not null) then
+        centro_id:=:new.fk_centro_atencion;
+
+        update Centro_Insumo set cantidad=cantidad-2 where fk_centro_atencion=centro_id;
+
+    end if;
+end;
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -84,6 +84,11 @@ create sequence sec_Modelo_Lugar
 start with 1
 increment by 1;
 
+create sequence sec_Registro
+start with 1
+increment by 1;
+
+
 /*---------------------------------*/
 
 drop sequence sec_Lugar;
@@ -160,4 +165,6 @@ drop sequence sec_Lugar_Proveedor;
 
 
 drop sequence sec_Modelo_Lugar;
+
+drop sequence sec_Registro;
 

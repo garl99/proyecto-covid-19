@@ -225,3 +225,12 @@ create table Modelo_Lugar(
     constraint FK_fk_modelo foreign key (fk_modelo) references Modelo(id),
     constraint FK_fk_lugar_modelo foreign key (fk_lugar) references Lugar(id)
 );
+
+
+create table Registro(
+    id number primary key,
+    fecha_registro date not null,
+    cantidad_infectados number not null,
+    fk_lugar number not null,
+    constraint FK_fk_lugar_registro foreign key (fk_lugar) references Lugar(id)
+);
