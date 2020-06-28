@@ -388,7 +388,7 @@ begin
         cantidad_viajeros:=round(cont*0.01);
     end if;
 
-    if(Rango_Fecha.validar_fecha_viajes(lugar_id))then
+    if(true)then
         While (cantidad_viajeros!=0) 
         loop
             LOOP
@@ -414,7 +414,7 @@ begin
                     EXIT WHEN(lugar_destino!=lugar_origen);
                 END LOOP;
 
-                if (Rango_Fecha.validar_fecha_viajes(lugar_destino))  then
+                if (true)  then
                 
                     select id_pasajero into pasajero_id from Persona where id=persona_id;
 
@@ -464,10 +464,10 @@ cantidad_sintomas number;
 begin
 
     select sp.fk_sintoma into sintoma_id from Sintoma_Persona sp where sp.fk_persona=persona_id and rownum<=1; 
-    dbms_output.put_line ('P-SINTOMA-ID'||sintoma_id);
+
     select dbms_random.value(3,5) into cantidad_sintomas_a_generar from dual;
     cantidad_sintomas_a_generar:=round(cantidad_sintomas_a_generar);
-    dbms_output.put_line ('P-SINTOMAS-GENERAR'|| cantidad_sintomas_a_generar); 
+
 
     select count(*) into cantidad_sintomas from Sintoma_Persona where fk_persona=persona_id;
 
@@ -483,9 +483,6 @@ begin
                     EXIT WHEN (sintoma_id_random!=sintoma_id_previo);
                 END LOOP;
 
-                dbms_output.put_line ('P-SINTOMAS'); 
-                dbms_output.put_line ('P-SINTOMAS-RANDOM'||sintoma_id_random); 
-                dbms_output.put_line ('P-SINTOMAS-PERSONA'||persona_id); 
                 insert into Sintoma_Persona (id, fecha_sintoma, atencion_medica, fk_sintoma,fk_persona) 
                 values (sec_sintoma_persona.nextval,fecha,'F',sintoma_id_random,persona_id);
 
@@ -497,7 +494,7 @@ end;
 
 /*------------------------------ PROCEDIMIENTO PARA INFECTAR-------------------------------------*/
 
-create or replace procedure infectar_personas(cantidad_personas number, lugar_id number, modelo number, fecha date)
+create or replace function infectar_personas(cantidad_personas number, lugar_id number, modelo number, fecha date) return boolean
 is            
 infectados number;                  --infectados de la simulacion. Varia durante la misma
 saludable_id number;                --persona saludable que se toma de manera aleatoria para infectar
@@ -508,12 +505,19 @@ personas_a_contagiar number;          --random para contagiar
 cantidad_sintomas number;
 cantidad_sintomas2 number;
 estatus_id number;
+numero_random number;
+limite number;
 BEGIN
 
-    dbms_output.put_line ('F-CANTIDAD PERSONAS: '|| cantidad_personas );  -- Personas que salen
-    dbms_output.put_line ('F-LUGAR_ID: '|| lugar_id);  -- id de lugar
-    dbms_output.put_line ('F-MODELO '|| modelo);  -- modelo elegido
 
+    select dbms_random.value(0,1) into numero_random from dual;
+    if(modelo=1) then
+        limite:=0.9;
+    else
+        numero_random:=1;
+        limite:=0;
+    end if;
+    
     cont:=0;
     while (cont < cantidad_personas)    --ciclo para simular salidas tomando como limite la cantidad total de habitantes.
         LOOP
@@ -526,38 +530,32 @@ BEGIN
             END IF;  
             END IF; 
 
-            dbms_output.put_line ('F-CANTIDAD A INFECTAR: '|| round(personas_a_contagiar));       
-     
+
             select count(p.id) into infectados
             from Persona p , Sintoma_Persona sp, Sintoma s
             where p.fk_lugar=lugar_id and s.id=sp.fk_sintoma and sp.fk_persona=p.id;       --contamos las personas que se encuentran actualmente infectadas
-           
-            dbms_output.put_line ('F-PERSONAS CON SINTOMAS COVID-19: '|| infectados);
 
-        
+
+
+
             select id into persona_id from                --Elegimos una persona random que sale de su hogar
             (select p.id from Persona p, Estatus_Persona ep
             where p.fk_lugar=lugar_id AND ep.fk_persona=p.id AND ep.fk_estatus=1 
             order by dbms_random.value )
             where rownum = 1;
 
-
-            dbms_output.put_line ('F-Persona que sale: '|| persona_id);   
-
             select count(sp.id) into cantidad_sintomas from Sintoma_Persona sp where sp.fk_persona=persona_id; --Añadir esto al TDA
             select ep.fk_estatus into estatus_id from Estatus_Persona ep where ep.fk_persona=persona_id;
 
-            dbms_output.put_line ('F1-cantidad_sintomas: '|| cantidad_sintomas); 
-            dbms_output.put_line ('F1-estatus_id: '|| estatus_id); 
 
-            IF (cantidad_sintomas=1 AND estatus_id=1) then
+
+            IF (cantidad_sintomas=1 AND estatus_id=1 AND numero_random>limite) then
 
                 anade_sintoma (persona_id,fecha,modelo);
                 select count(sp.id) into cantidad_sintomas from Sintoma_Persona sp where sp.fk_persona=persona_id; --Añadir esto al TDA
 
             END IF;          
 
-            dbms_output.put_line ('F2-cantidad_sintomas: '|| cantidad_sintomas);  
             IF(cantidad_sintomas>=4) then       --condicion que valida si la persona que salio tiene sintomas de covid-19
                 cont2:=0;
                 while (cont2 < round(personas_a_contagiar))  --Aqui elige una persona random saludable y la infecta.
@@ -569,11 +567,11 @@ BEGIN
 
                         select count(sp.id) into cantidad_sintomas2 from Sintoma_Persona sp where sp.fk_persona=saludable_id; --Añadir esto al TDA
 
-                        IF (cantidad_sintomas2=1) then
+                        select dbms_random.value(0,1) into numero_random from dual;
+                        
+                        IF (cantidad_sintomas2=1 and numero_random>limite) then
                             anade_sintoma (saludable_id,fecha,modelo);
                         END IF; 
-                        
-                        dbms_output.put_line ('F-status saludable: '|| saludable_id );   
 
                         cont2:=cont2+1;
                     END LOOP;
@@ -581,8 +579,13 @@ BEGIN
 
         cont:= cont+1;
         END LOOP;
-END; 
-
+        
+        return true;
+        
+        exception
+          when no_data_found then
+            return false; 
+END;
 
 
 
@@ -613,15 +616,12 @@ cursor c_estados is select * from Lugar where tipo='estado' order by id;
   
 
 BEGIN 
-    dbms_output.put_line ('P-MODELO: '|| modelo); 
-    dbms_output.put_line ('P-FECHA: '|| sysdate); 
     fecha:=sysdate;
 
     select dbms_random.value(30,60) into dias from dual;
     dias:=round(dias);
     dia_recuperacion:=round(dias*0.6);
-
-    dbms_output.put_line ('-------------INICIO DE LA SIMULACION----------');  
+    
 
     contador_dias:=1;
     WHILE (contador_dias<=3) --solo 30 dias pruebas
@@ -634,9 +634,6 @@ BEGIN
                 where p.fk_lugar=fila.id and p.id=ep.fk_persona and ep.fk_estatus=e.id and ep.fk_estatus=2;
 
                 select count(p.id) into cantidad_personas from Persona p where p.fk_lugar=fila.id;                            --Se guarda la cantidad de personas de ese lugar  
-                dbms_output.put_line ('P-TOTAL PERSONAS: '|| cantidad_personas);  
-
-                dbms_output.put_line ('Cantidad de personas infectadas ANTES de la simulacion para el modelo'||' '||modelo ||': '||cantidad_infectados2 || ', en '|| fila.nombre || ',en el dia: ' || contador_dias);  
 
                 IF (modelo=1) THEN                                                                                               
                     infectar_personas(round(cantidad_personas*0.95),fila.id,modelo,fecha);    --llamada a funcion que infecta
@@ -644,9 +641,9 @@ BEGIN
                     viajes(modelo,fila.id,fecha);
                     
                     if(contador_dias=2) then
-                     flag_recuperacion:= recuperacion(fila.id,fecha,modelo);
+                     flag_recuperacion:= recuperacion(fila.id,fecha);
                     end if;
-                    flag_muertes:=muertes(fila.id,fecha);
+                     flag_muertes:=muertes(fila.id,fecha,modelo);
 
                 ELSE IF (modelo=2) THEN  
                      infectar_personas(round(cantidad_personas*0.0625),fila.id,modelo,fecha);    --llamada a funcion que infecta
@@ -665,16 +662,6 @@ BEGIN
                 where p.fk_lugar=fila.id and p.id=ep.fk_persona and ep.fk_estatus=e.id and ep.fk_estatus=2;
 
                 nuevos_casos:=cantidad_infectados-cantidad_infectados2;
-                dbms_output.put_line (''); 
-                dbms_output.put_line ('-------------FIN DE LA SIMULACION----------'); 
-                dbms_output.put_line ('');
-                IF (cantidad_infectados<cantidad_personas) THEN
-                        dbms_output.put_line ('Cantidad de personas infectadas DESPUES de la simulacion para el modelo '||modelo ||': '||cantidad_infectados || ', en '|| fila.nombre || ',en el dia: ' || contador_dias); 
-                        dbms_output.put_line ('Cantidad de casos nuevos: + '|| nuevos_casos);  
-                ELSE  
-                        dbms_output.put_line ('El total de la poblacion esta infectada para el modelo '||modelo ||': '||cantidad_infectados || ', en '|| fila.nombre || ',en el dia: ' || contador_dias); 
-                        dbms_output.put_line ('Cantidad de casos nuevos: + '|| nuevos_casos); 
-                END IF;
         
         END LOOP;
 
@@ -720,3 +707,19 @@ delete from sintoma_persona;
 update Estatus_Persona set fk_centro_atencion=null,fecha_fallecimiento=null,fecha_infeccion=null,fecha_recuperacion=null,fk_estatus=1;
 
 
+
+
+set serveroutput on size unlimited;
+declare
+fecha date;
+dias number;
+begin
+    fecha:='27/05/2020';
+    dias:=5;
+    while (dias!=0)
+        loop
+        simulacion(1,fecha);
+        fecha:=fecha+1;
+        dias:=dias-1;
+    end loop;
+end;
