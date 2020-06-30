@@ -1,0 +1,15 @@
+insert into Viaje (id, fecha_inicio, fk_pasajero, fk_origen, fk_destino, fk_avion) values (sec_viaje.nextval, '14/05/2020', 2805188, 44, 18, 14);
+insert into Viaje (id, fecha_inicio, fk_pasajero, fk_origen, fk_destino, fk_avion) values (sec_viaje.nextval, '08/03/2020', 291045, 18, 33, 13);
+insert into Viaje (id, fecha_inicio, fk_pasajero, fk_origen, fk_destino, fk_avion) values (sec_viaje.nextval, '13/01/2020', 5650976, 24, 51, 7);
+insert into Viaje (id, fecha_inicio, fk_pasajero, fk_origen, fk_destino, fk_avion) values (sec_viaje.nextval, '19/01/2020', 4643284, 44, 43, 2);
+insert into Viaje (id, fecha_inicio, fk_pasajero, fk_origen, fk_destino, fk_avion) values (sec_viaje.nextval, '10/04/2020', 999819, 36, 34, 2);
+insert into Viaje (id, fecha_inicio, fk_pasajero, fk_origen, fk_destino, fk_avion) values (sec_viaje.nextval, '30/05/2020', 378056, 58, 63, 10);
+insert into Viaje (id, fecha_inicio, fk_pasajero, fk_origen, fk_destino, fk_avion) values (sec_viaje.nextval, '27/05/2020', 2110181, 60, 46, 4);
+insert into Viaje (id, fecha_inicio, fk_pasajero, fk_origen, fk_destino, fk_avion) values (sec_viaje.nextval, '04/01/2020', 6253465, 29, 46, 15);
+insert into Viaje (id, fecha_inicio, fk_pasajero, fk_origen, fk_destino, fk_avion) values (sec_viaje.nextval, '20/05/2020', 999819, 30, 63, 15);
+insert into Viaje (id, fecha_inicio, fk_pasajero, fk_origen, fk_destino, fk_avion) values (sec_viaje.nextval, '29/03/2020', 8128236, 61, 61, 12);
+insert into Viaje (id, fecha_inicio, fk_pasajero, fk_origen, fk_destino, fk_avion) values (sec_viaje.nextval, '08/02/2020', 8600819, 23, 53, 2);
+insert into Viaje (id, fecha_inicio, fk_pasajero, fk_origen, fk_destino, fk_avion) values (sec_viaje.nextval, '14/05/2020', 5744858, 46, 30, 6);
+insert into Viaje (id, fecha_inicio, fk_pasajero, fk_origen, fk_destino, fk_avion) values (sec_viaje.nextval, '07/03/2020', 3202296, 50, 49, 5);
+insert into Viaje (id, fecha_inicio, fk_pasajero, fk_origen, fk_destino, fk_avion) values (sec_viaje.nextval, '24/01/2020', 2680693, 41, 46, 10);
+insert into Viaje (id, fecha_inicio, fk_pasajero, fk_origen, fk_destino, fk_avion) values (sec_viaje.nextval, '28/02/2020', 7150615, 42, 43, 6);

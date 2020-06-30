@@ -1,0 +1,15 @@
+insert into Centro_Insumo (id, cantidad, fk_insumo, fk_centro_atencion) values (sec_centro_insumo.nextval, 150, 7, 1);
+insert into Centro_Insumo (id, cantidad, fk_insumo, fk_centro_atencion) values (sec_centro_insumo.nextval, 150, 1, 2);
+insert into Centro_Insumo (id, cantidad, fk_insumo, fk_centro_atencion) values (sec_centro_insumo.nextval, 150, 11, 3);
+insert into Centro_Insumo (id, cantidad, fk_insumo, fk_centro_atencion) values (sec_centro_insumo.nextval, 150, 9, 4);
+insert into Centro_Insumo (id, cantidad, fk_insumo, fk_centro_atencion) values (sec_centro_insumo.nextval, 150, 9, 5);
+insert into Centro_Insumo (id, cantidad, fk_insumo, fk_centro_atencion) values (sec_centro_insumo.nextval, 150, 1, 6);
+insert into Centro_Insumo (id, cantidad, fk_insumo, fk_centro_atencion) values (sec_centro_insumo.nextval, 150, 10, 7);
+insert into Centro_Insumo (id, cantidad, fk_insumo, fk_centro_atencion) values (sec_centro_insumo.nextval, 150, 2, 8);
+insert into Centro_Insumo (id, cantidad, fk_insumo, fk_centro_atencion) values (sec_centro_insumo.nextval, 150, 3, 9);
+insert into Centro_Insumo (id, cantidad, fk_insumo, fk_centro_atencion) values (sec_centro_insumo.nextval, 150, 14, 10);
+insert into Centro_Insumo (id, cantidad, fk_insumo, fk_centro_atencion) values (sec_centro_insumo.nextval, 150, 10, 11);
+insert into Centro_Insumo (id, cantidad, fk_insumo, fk_centro_atencion) values (sec_centro_insumo.nextval, 150, 3, 12);
+insert into Centro_Insumo (id, cantidad, fk_insumo, fk_centro_atencion) values (sec_centro_insumo.nextval, 150, 8, 13);
+insert into Centro_Insumo (id, cantidad, fk_insumo, fk_centro_atencion) values (sec_centro_insumo.nextval, 150, 9, 14);
+insert into Centro_Insumo (id, cantidad, fk_insumo, fk_centro_atencion) values (sec_centro_insumo.nextval, 150, 14, 15);

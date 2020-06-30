@@ -61,7 +61,7 @@ BEGIN
     fecha:=TO_DATE(fecha_inicial,'DD/MM/YYYY');
     
     contador_dias:=1;
-    cont_pais:=1;
+    cont_pais:=6;
 
         while(cont_pais<=15)
         LOOP
@@ -177,7 +177,7 @@ end;
 /*--------------------------------Recuperar Lugar-----------------------------------------*/
 
 
-create or replace function recuperar(lugar_id number, fecha date) return boolean is
+create or replace function recuperar(lugar_id number, modelo number, fecha date) return boolean is
 cantidad_recuperacion number;
 caso1 number;
 caso2 number;

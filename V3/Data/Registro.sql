@@ -1,0 +1,15 @@
+insert into Registro (id, fecha_registro, cantidad_infectados, fk_lugar) values (sec_registro.nextval, '03/06/2019', 12, 6);
+insert into Registro (id, fecha_registro, cantidad_infectados, fk_lugar) values (sec_registro.nextval, '26/07/2019', 8, 7);
+insert into Registro (id, fecha_registro, cantidad_infectados, fk_lugar) values (sec_registro.nextval, '22/06/2019', 8, 8);
+insert into Registro (id, fecha_registro, cantidad_infectados, fk_lugar) values (sec_registro.nextval, '25/07/2019', 8, 9);
+insert into Registro (id, fecha_registro, cantidad_infectados, fk_lugar) values (sec_registro.nextval, '09/06/2019', 11, 10);
+insert into Registro (id, fecha_registro, cantidad_infectados, fk_lugar) values (sec_registro.nextval, '16/06/2019', 9, 11);
+insert into Registro (id, fecha_registro, cantidad_infectados, fk_lugar) values (sec_registro.nextval, '15/07/2019', 6, 12);
+insert into Registro (id, fecha_registro, cantidad_infectados, fk_lugar) values (sec_registro.nextval, '11/07/2019', 2, 13);
+insert into Registro (id, fecha_registro, cantidad_infectados, fk_lugar) values (sec_registro.nextval, '12/07/2019', 5, 14);
+insert into Registro (id, fecha_registro, cantidad_infectados, fk_lugar) values (sec_registro.nextval, '03/06/2019', 3, 15);
+insert into Registro (id, fecha_registro, cantidad_infectados, fk_lugar) values (sec_registro.nextval, '16/07/2019', 10, 6);
+insert into Registro (id, fecha_registro, cantidad_infectados, fk_lugar) values (sec_registro.nextval, '24/06/2019', 9, 7);
+insert into Registro (id, fecha_registro, cantidad_infectados, fk_lugar) values (sec_registro.nextval, '19/07/2019', 7, 8);
+insert into Registro (id, fecha_registro, cantidad_infectados, fk_lugar) values (sec_registro.nextval, '09/07/2019', 1, 9);
+insert into Registro (id, fecha_registro, cantidad_infectados, fk_lugar) values (sec_registro.nextval, '18/06/2019', 14, 10);
