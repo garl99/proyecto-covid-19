@@ -16,66 +16,66 @@ execute agregaImagen('IMAGE', 'italia.png',  'Italia', 'pais', 60360000);
 execute agregaImagen('IMAGE', 'rusia.jpg', 'Rusia', 'pais', 144500000); 
 execute agregaImagen('IMAGE', 'venezuela.png', 'Venezuela', 'pais', 28870000);
 
-insert into Lugar values(sec_Lugar.nextVal, 'California', 'estado', 39510000, null, null, 6);
-insert into Lugar values(sec_Lugar.nextVal, 'Texas', 'estado', 29000000, null, null, 6);
-insert into Lugar values(sec_Lugar.nextVal, 'Florida', 'estado', 21480000, null, null, 6);
-insert into Lugar values(sec_Lugar.nextVal, 'Arizona', 'estado', 7279000, null, null, 6);
-insert into Lugar values(sec_Lugar.nextVal, 'Colorado', 'estado', 5759000, null, null, 6);
+insert into Lugar values(sec_Lugar.nextVal, 'California', 'estado', 39510000, null,  Info_Cantidad (0,0,0,0,0,0), 6);
+insert into Lugar values(sec_Lugar.nextVal, 'Texas', 'estado', 29000000, null,  Info_Cantidad (0,0,0,0,0,0), 6);
+insert into Lugar values(sec_Lugar.nextVal, 'Florida', 'estado', 21480000, null,  Info_Cantidad (0,0,0,0,0,0), 6);
+insert into Lugar values(sec_Lugar.nextVal, 'Arizona', 'estado', 7279000, null,  Info_Cantidad (0,0,0,0,0,0), 6);
+insert into Lugar values(sec_Lugar.nextVal, 'Colorado', 'estado', 5759000, null,  Info_Cantidad (0,0,0,0,0,0), 6);
 
-insert into Lugar values(sec_Lugar.nextVal, 'Berlin', 'estado', 3769000, null, null, 7);
-insert into Lugar values(sec_Lugar.nextVal, 'Hamburgo', 'estado', 1899000, null, null, 7);
-insert into Lugar values(sec_Lugar.nextVal, 'Munich', 'estado', 1472000, null, null, 7);
-insert into Lugar values(sec_Lugar.nextVal, 'Colonia', 'estado', 1061000, null, null, 7);
-insert into Lugar values(sec_Lugar.nextVal, 'Frankfurt', 'estado', 753056, null, null, 7);
+insert into Lugar values(sec_Lugar.nextVal, 'Berlin', 'estado', 3769000, null,  Info_Cantidad (0,0,0,0,0,0), 7);
+insert into Lugar values(sec_Lugar.nextVal, 'Hamburgo', 'estado', 1899000, null,  Info_Cantidad (0,0,0,0,0,0), 7);
+insert into Lugar values(sec_Lugar.nextVal, 'Munich', 'estado', 1472000, null,  Info_Cantidad (0,0,0,0,0,0), 7);
+insert into Lugar values(sec_Lugar.nextVal, 'Colonia', 'estado', 1061000, null,  Info_Cantidad (0,0,0,0,0,0), 7);
+insert into Lugar values(sec_Lugar.nextVal, 'Frankfurt', 'estado', 753056, null,  Info_Cantidad (0,0,0,0,0,0), 7);
 
-insert into Lugar values(sec_Lugar.nextVal, 'Sao Paulo', 'estado', 41250000, null, null, 8);
-insert into Lugar values(sec_Lugar.nextVal, 'Minas', 'estado', 21170000, null, null, 8);
-insert into Lugar values(sec_Lugar.nextVal, 'Rio de Janeiro', 'estado', 17260000, null, null, 8);
-insert into Lugar values(sec_Lugar.nextVal, 'Bahia', 'estado', 15150000, null, null, 8);
-insert into Lugar values(sec_Lugar.nextVal, 'Rio Grande', 'estado', 11228000, null, null, 8);
+insert into Lugar values(sec_Lugar.nextVal, 'Sao Paulo', 'estado', 41250000, null,  Info_Cantidad (0,0,0,0,0,0), 8);
+insert into Lugar values(sec_Lugar.nextVal, 'Minas', 'estado', 21170000, null,  Info_Cantidad (0,0,0,0,0,0), 8);
+insert into Lugar values(sec_Lugar.nextVal, 'Rio de Janeiro', 'estado', 17260000, null,  Info_Cantidad (0,0,0,0,0,0), 8);
+insert into Lugar values(sec_Lugar.nextVal, 'Bahia', 'estado', 15150000, null,  Info_Cantidad (0,0,0,0,0,0), 8);
+insert into Lugar values(sec_Lugar.nextVal, 'Rio Grande', 'estado', 11228000, null,  Info_Cantidad (0,0,0,0,0,0), 8);
 
 
-insert into Lugar values(sec_Lugar.nextVal, 'Shanghai', 'estado', 24280000, null, null, 9);
-insert into Lugar values(sec_Lugar.nextVal, 'Pekin', 'estado', 21710000, null, null, 9);
-insert into Lugar values(sec_Lugar.nextVal, 'Canton', 'estado', 13995790, null, null, 9);
-insert into Lugar values(sec_Lugar.nextVal, 'Shanzhen', 'estado', 17557170, null, null, 9);
-insert into Lugar values(sec_Lugar.nextVal, 'Tianjin', 'estado', 19898560, null, null, 9);
+insert into Lugar values(sec_Lugar.nextVal, 'Shanghai', 'estado', 24280000, null,  Info_Cantidad (0,0,0,0,0,0), 9);
+insert into Lugar values(sec_Lugar.nextVal, 'Pekin', 'estado', 21710000, null,  Info_Cantidad (0,0,0,0,0,0), 9);
+insert into Lugar values(sec_Lugar.nextVal, 'Canton', 'estado', 13995790, null,  Info_Cantidad (0,0,0,0,0,0), 9);
+insert into Lugar values(sec_Lugar.nextVal, 'Shanzhen', 'estado', 17557170, null,  Info_Cantidad (0,0,0,0,0,0), 9);
+insert into Lugar values(sec_Lugar.nextVal, 'Tianjin', 'estado', 19898560, null,  Info_Cantidad (0,0,0,0,0,0), 9);
 
-insert into Lugar values(sec_Lugar.nextVal, 'Madrid', 'estado', 6685500, null, null, 10);
-insert into Lugar values(sec_Lugar.nextVal, 'Barcelona', 'estado', 5664579, null, null, 10);
-insert into Lugar values(sec_Lugar.nextVal, 'Valencia', 'estado', 2565120, null, null, 10);
-insert into Lugar values(sec_Lugar.nextVal, 'Sevilla', 'estado', 1939890, null, null, 10);
-insert into Lugar values(sec_Lugar.nextVal, 'Alicante', 'estado', 1858690, null, null, 10);
+insert into Lugar values(sec_Lugar.nextVal, 'Madrid', 'estado', 6685500, null,  Info_Cantidad (0,0,0,0,0,0), 10);
+insert into Lugar values(sec_Lugar.nextVal, 'Barcelona', 'estado', 5664579, null,  Info_Cantidad (0,0,0,0,0,0), 10);
+insert into Lugar values(sec_Lugar.nextVal, 'Valencia', 'estado', 2565120, null,  Info_Cantidad (0,0,0,0,0,0), 10);
+insert into Lugar values(sec_Lugar.nextVal, 'Sevilla', 'estado', 1939890, null,  Info_Cantidad (0,0,0,0,0,0), 10);
+insert into Lugar values(sec_Lugar.nextVal, 'Alicante', 'estado', 1858690, null,  Info_Cantidad (0,0,0,0,0,0), 10);
 
-insert into Lugar values(sec_Lugar.nextVal, 'Paris', 'estado', 2148000, null, null, 11);
-insert into Lugar values(sec_Lugar.nextVal, 'Marsella', 'estado', 855393, null, null, 11);
-insert into Lugar values(sec_Lugar.nextVal, 'Lyon', 'estado', 500715, null, null, 11);
-insert into Lugar values(sec_Lugar.nextVal, 'Toulouse', 'estado', 458298, null, null, 11);
-insert into Lugar values(sec_Lugar.nextVal, 'Niza', 'estado', 342295, null, null, 11);
+insert into Lugar values(sec_Lugar.nextVal, 'Paris', 'estado', 2148000, null,  Info_Cantidad (0,0,0,0,0,0), 11);
+insert into Lugar values(sec_Lugar.nextVal, 'Marsella', 'estado', 855393, null,  Info_Cantidad (0,0,0,0,0,0), 11);
+insert into Lugar values(sec_Lugar.nextVal, 'Lyon', 'estado', 500715, null,  Info_Cantidad (0,0,0,0,0,0), 11);
+insert into Lugar values(sec_Lugar.nextVal, 'Toulouse', 'estado', 458298, null,  Info_Cantidad (0,0,0,0,0,0), 11);
+insert into Lugar values(sec_Lugar.nextVal, 'Niza', 'estado', 342295, null,  Info_Cantidad (0,0,0,0,0,0), 11);
 
-insert into Lugar values(sec_Lugar.nextVal, 'Londres', 'estado', 9248670, null, null, 12);
-insert into Lugar values(sec_Lugar.nextVal, 'Birmingham', 'estado', 1157580, null, null, 12);
-insert into Lugar values(sec_Lugar.nextVal, 'Glasgow', 'estado', 613050, null, null, 12);
-insert into Lugar values(sec_Lugar.nextVal, 'Liverpool', 'estado', 488263, null, null, 12);
-insert into Lugar values(sec_Lugar.nextVal, 'Leeds', 'estado', 798825, null, null, 12);
+insert into Lugar values(sec_Lugar.nextVal, 'Londres', 'estado', 9248670, null,  Info_Cantidad (0,0,0,0,0,0), 12);
+insert into Lugar values(sec_Lugar.nextVal, 'Birmingham', 'estado', 1157580, null,  Info_Cantidad (0,0,0,0,0,0), 12);
+insert into Lugar values(sec_Lugar.nextVal, 'Glasgow', 'estado', 613050, null,  Info_Cantidad (0,0,0,0,0,0), 12);
+insert into Lugar values(sec_Lugar.nextVal, 'Liverpool', 'estado', 488263, null,  Info_Cantidad (0,0,0,0,0,0), 12);
+insert into Lugar values(sec_Lugar.nextVal, 'Leeds', 'estado', 798825, null,  Info_Cantidad (0,0,0,0,0,0), 12);
 
-insert into Lugar values(sec_Lugar.nextVal, 'Roma', 'estado', 3458580, null, null, 13);
-insert into Lugar values(sec_Lugar.nextVal, 'Milan', 'estado', 1550588, null, null, 13);
-insert into Lugar values(sec_Lugar.nextVal, 'Napoles', 'estado', 1012034, null, null, 13);
-insert into Lugar values(sec_Lugar.nextVal, 'Turin', 'estado', 947653, null, null, 13);
-insert into Lugar values(sec_Lugar.nextVal, 'Palermo', 'estado', 722374, null, null, 13);
+insert into Lugar values(sec_Lugar.nextVal, 'Roma', 'estado', 3458580, null,  Info_Cantidad (0,0,0,0,0,0), 13);
+insert into Lugar values(sec_Lugar.nextVal, 'Milan', 'estado', 1550588, null,  Info_Cantidad (0,0,0,0,0,0), 13);
+insert into Lugar values(sec_Lugar.nextVal, 'Napoles', 'estado', 1012034, null,  Info_Cantidad (0,0,0,0,0,0), 13);
+insert into Lugar values(sec_Lugar.nextVal, 'Turin', 'estado', 947653, null,  Info_Cantidad (0,0,0,0,0,0), 13);
+insert into Lugar values(sec_Lugar.nextVal, 'Palermo', 'estado', 722374, null,  Info_Cantidad (0,0,0,0,0,0), 13);
 
-insert into Lugar values(sec_Lugar.nextVal, 'Moscu', 'estado', 11500000, null, null, 14);
-insert into Lugar values(sec_Lugar.nextVal, 'San Petesburgo', 'estado', 5523780, null, null, 14);
-insert into Lugar values(sec_Lugar.nextVal, 'Novosibirsk', 'estado', 1766331, null, null, 14);
-insert into Lugar values(sec_Lugar.nextVal, 'Ekaterinburgo', 'estado', 1510000, null, null, 14);
-insert into Lugar values(sec_Lugar.nextVal, 'Samara', 'estado', 1178999, null, null, 14);
+insert into Lugar values(sec_Lugar.nextVal, 'Moscu', 'estado', 11500000, null,  Info_Cantidad (0,0,0,0,0,0), 14);
+insert into Lugar values(sec_Lugar.nextVal, 'San Petesburgo', 'estado', 5523780, null,  Info_Cantidad (0,0,0,0,0,0), 14);
+insert into Lugar values(sec_Lugar.nextVal, 'Novosibirsk', 'estado', 1766331, null,  Info_Cantidad (0,0,0,0,0,0), 14);
+insert into Lugar values(sec_Lugar.nextVal, 'Ekaterinburgo', 'estado', 1510000, null,  Info_Cantidad (0,0,0,0,0,0), 14);
+insert into Lugar values(sec_Lugar.nextVal, 'Samara', 'estado', 1178999, null,  Info_Cantidad (0,0,0,0,0,0), 14);
 
-insert into Lugar values(sec_Lugar.nextVal, 'Distrito Capital', 'estado', 4946956, null, null, 15);
-insert into Lugar values(sec_Lugar.nextVal, 'Zulia', 'estado', 4280715, null, null, 15);
-insert into Lugar values(sec_Lugar.nextVal, 'Miranda', 'estado', 3218038, null, null, 15);
-insert into Lugar values(sec_Lugar.nextVal, 'Lara', 'estado', 2219211, null, null, 15);
-insert into Lugar values(sec_Lugar.nextVal, 'Carabobo', 'estado', 2538085, null, null, 15);
+insert into Lugar values(sec_Lugar.nextVal, 'Distrito Capital', 'estado', 4946956, null,  Info_Cantidad (0,0,0,0,0,0), 15);
+insert into Lugar values(sec_Lugar.nextVal, 'Zulia', 'estado', 4280715, null,  Info_Cantidad (0,0,0,0,0,0), 15);
+insert into Lugar values(sec_Lugar.nextVal, 'Miranda', 'estado', 3218038, null,  Info_Cantidad (0,0,0,0,0,0), 15);
+insert into Lugar values(sec_Lugar.nextVal, 'Lara', 'estado', 2219211, null,  Info_Cantidad (0,0,0,0,0,0), 15);
+insert into Lugar values(sec_Lugar.nextVal, 'Carabobo', 'estado', 2538085, null,  Info_Cantidad (0,0,0,0,0,0), 15);
 
 
 /*Patologías*/
@@ -365,33 +365,17 @@ insert into Frontera (id,  rango_fecha, longitud, fk_lugar) values (sec_frontera
 insert into Frontera (id,  rango_fecha, longitud, fk_lugar) values (sec_frontera.nextval, Rango_Fecha(null, null), 236, 6);
 insert into Frontera (id,  rango_fecha, longitud, fk_lugar) values (sec_frontera.nextval, Rango_Fecha(null, null), 736, 7);
 insert into Frontera (id,  rango_fecha, longitud, fk_lugar) values (sec_frontera.nextval, Rango_Fecha(null, null), 503, 8);
-insert into Frontera (id,  rango_fecha, longitud, fk_lugar) values (sec_frontera.nextval,Rango_Fecha( null, null), 773, 9);
+insert into Frontera (id,  rango_fecha, longitud, fk_lugar) values (sec_frontera.nextval, Rango_Fecha( null, null), 773, 9);
 insert into Frontera (id,  rango_fecha, longitud, fk_lugar) values (sec_frontera.nextval, Rango_Fecha(null, null), 197, 10);
 
 
 
 
-/*----------------------Ejecutar Personas1.sql y luego Personas2.sql----------------*/
+/*-------------------------Ejecutar Personas.sql--------------------------*/
 
 /*-------------------------Ejecutar Centro_Atencion.sql-----------------------*/
 
-/*--------------------------------Centro_Insumo-------------------------------*/
-
-insert into Centro_Insumo (id, cantidad, fk_centro_atencion, fk_insumo) values (sec_centro_insumo.nextval, 97, 1, 1);
-insert into Centro_Insumo (id, cantidad, fk_centro_atencion, fk_insumo) values (sec_centro_insumo.nextval, 64, 2, 2);
-insert into Centro_Insumo (id, cantidad, fk_centro_atencion, fk_insumo) values (sec_centro_insumo.nextval, 95, 3, 3);
-insert into Centro_Insumo (id, cantidad, fk_centro_atencion, fk_insumo) values (sec_centro_insumo.nextval, 74, 4, 4);
-insert into Centro_Insumo (id, cantidad, fk_centro_atencion, fk_insumo) values (sec_centro_insumo.nextval, 53, 5, 5);
-insert into Centro_Insumo (id, cantidad, fk_centro_atencion, fk_insumo) values (sec_centro_insumo.nextval, 95, 6, 6);
-insert into Centro_Insumo (id, cantidad, fk_centro_atencion, fk_insumo) values (sec_centro_insumo.nextval, 95, 7, 7);
-insert into Centro_Insumo (id, cantidad, fk_centro_atencion, fk_insumo) values (sec_centro_insumo.nextval, 53, 8, 8);
-insert into Centro_Insumo (id, cantidad, fk_centro_atencion, fk_insumo) values (sec_centro_insumo.nextval, 98, 9, 9);
-insert into Centro_Insumo (id, cantidad, fk_centro_atencion, fk_insumo) values (sec_centro_insumo.nextval, 60, 10, 10);
-insert into Centro_Insumo (id, cantidad, fk_centro_atencion, fk_insumo) values (sec_centro_insumo.nextval, 78, 11, 11);
-insert into Centro_Insumo (id, cantidad, fk_centro_atencion, fk_insumo) values (sec_centro_insumo.nextval, 62, 12, 12);
-insert into Centro_Insumo (id, cantidad, fk_centro_atencion, fk_insumo) values (sec_centro_insumo.nextval, 70, 13, 13);
-insert into Centro_Insumo (id, cantidad, fk_centro_atencion, fk_insumo) values (sec_centro_insumo.nextval, 70, 14, 14);
-insert into Centro_Insumo (id, cantidad, fk_centro_atencion, fk_insumo) values (sec_centro_insumo.nextval, 78, 15, 15);
+/*-------------------------Centro_Insumo.sql-------------------------------*/
 
 /*-------------------------Ejecutar Estatus_Persona.sql-----------------------*/
 
@@ -399,4 +383,6 @@ insert into Centro_Insumo (id, cantidad, fk_centro_atencion, fk_insumo) values (
 
 /*-------------------------Ejecutar Sintoma_Persona.sql-----------------------*/
 
-/*-------------------------Ejecutar Viaje.sql-----------------------*/
+/*-------------------------Ejecutar Viaje.sql------------------------*/
+
+/*-------------------------Ejecutar Registro.sql---------------------*/

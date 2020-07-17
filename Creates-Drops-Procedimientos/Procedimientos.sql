@@ -10,7 +10,7 @@ BEGIN
 
    f_lob := bfilename(directorio, archivoImagen);
 
-   INSERT INTO Lugar VALUES ( sec_Lugar.nextVal, pais, tipo, poblacion, empty_blob(), null, null )
+   INSERT INTO Lugar VALUES ( sec_Lugar.nextVal, pais, tipo, poblacion, empty_blob(), Info_Cantidad (0,0,0,0,0,0), null )
 
    RETURNING BANDERA into b_lob;
 
@@ -158,3 +158,4 @@ END;
     drop procedure "AGREGAEROLINEA";
     drop procedure "AGREGAPERSONA";
     drop procedure "AGREGAPROVEEDOR";
+    drop procedure "AGREGAIMAGEN";

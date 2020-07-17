@@ -19,7 +19,7 @@ drop table Sintoma cascade constraints;
 drop table Viaje cascade constraints;
 drop table Avion cascade constraints;
 drop table Proveedor_Internet cascade constraints;
-
+drop table Registro cascade constraints;
 
 drop type "RANGO_FECHA";
 drop type "INFO_CANTIDAD";

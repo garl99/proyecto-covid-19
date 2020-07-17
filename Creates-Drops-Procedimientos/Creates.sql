@@ -1,7 +1,8 @@
 create or replace type Rango_Fecha as object(
     fecha_inicio date,
     fecha_final date,
-    static function validar_fecha(fecha_inicio date, fecha_final date) return boolean
+    static function validar_fecha(fecha_inicio date, fecha_final date) return boolean,
+    static function validar_fecha_viaje(lugar_id number) return boolean --valida si es posible viajar (Fronteras abiertas y vuelos permitidos)
 );
 
 create or replace type Info_Cantidad as object(
@@ -13,6 +14,15 @@ create or replace type Info_Cantidad as object(
     porcentaje_fallecidos float,
     static function calcular_porcentaje(cantidad number, n_poblacion number) return number
 );
+
+CREATE OR REPLACE TYPE BODY info_cantidad IS STATIC FUNCTION calcular_porcentaje (cantidad number, N_poblacion number) RETURN number
+IS
+resultado number; -- declaración de variables locales
+    BEGIN
+    resultado:=(cantidad/N_poblacion)*100;
+    return resultado;
+    END;
+END;
 
 create or replace type Info_Persona as object(
     primer_nombre varchar2(20),
@@ -58,7 +68,8 @@ create table Patologia_Persona(
     id number primary key,
     fk_patologia number not null,
     fk_persona number not null,
-    constraint FK_fk_patologia foreign key (fk_patologia) references Persona(id)
+    constraint FK_fk_patologia foreign key (fk_patologia) references Patologia(id),
+    constraint FK_fk_persona_patologia foreign key (fk_persona) references Persona(id)
 );
 
 
@@ -209,4 +220,13 @@ create table Modelo_Lugar(
     fk_lugar number not null,
     constraint FK_fk_modelo foreign key (fk_modelo) references Modelo(id),
     constraint FK_fk_lugar_modelo foreign key (fk_lugar) references Lugar(id)
+);
+
+
+create table Registro(
+    id number primary key,
+    fecha_registro date not null,
+    cantidad_infectados number not null,
+    fk_lugar number not null,
+    constraint FK_fk_lugar_registro foreign key (fk_lugar) references Lugar(id)
 );
