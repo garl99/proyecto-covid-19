@@ -242,57 +242,58 @@ execute agregaProveedor ('IMAGEN_DIR_PROVEEDOR_INTERNET','oi', '13.png');
 execute agregaProveedor ('IMAGEN_DIR_PROVEEDOR_INTERNET','tigo', '14.png');
 execute agregaProveedor ('IMAGEN_DIR_PROVEEDOR_INTERNET','inter', '15.png');
 
-/*------------------------Lugar_Proveedor---------------------------------*/
-insert into Lugar_Proveedor (id, fecha, velocidad_subida, velocidad_bajada, horas_interrupcion, fk_lugar, fk_proveedor) values (1, '11/10/2019', 40.49, 42.65, 7, 16, 1);
-insert into Lugar_Proveedor (id, fecha, velocidad_subida, velocidad_bajada, horas_interrupcion, fk_lugar, fk_proveedor) values (2, '17/11/2019', 90.61, 78.3, 8, 17, 2);
-insert into Lugar_Proveedor (id, fecha, velocidad_subida, velocidad_bajada, horas_interrupcion, fk_lugar, fk_proveedor) values (3, '26/11/2019', 99.73, 70.74, 6, 18, 3);
-insert into Lugar_Proveedor (id, fecha, velocidad_subida, velocidad_bajada, horas_interrupcion, fk_lugar, fk_proveedor) values (4, '21/10/2019', 77.54, 97.94, 11, 19, 4);
-insert into Lugar_Proveedor (id, fecha, velocidad_subida, velocidad_bajada, horas_interrupcion, fk_lugar, fk_proveedor) values (5, '11/11/2019', 54.55, 51.37, 3, 20, 5);
-insert into Lugar_Proveedor (id, fecha, velocidad_subida, velocidad_bajada, horas_interrupcion, fk_lugar, fk_proveedor) values (6, '03/12/2019', 67.69, 3.81, 3, 21, 6);
-insert into Lugar_Proveedor (id, fecha, velocidad_subida, velocidad_bajada, horas_interrupcion, fk_lugar, fk_proveedor) values (7, '14/11/2019', 87.46, 81.68, 1, 22, 7);
-insert into Lugar_Proveedor (id, fecha, velocidad_subida, velocidad_bajada, horas_interrupcion, fk_lugar, fk_proveedor) values (8, '07/12/2019', 39.74, 26.16, 2, 23, 8);
-insert into Lugar_Proveedor (id, fecha, velocidad_subida, velocidad_bajada, horas_interrupcion, fk_lugar, fk_proveedor) values (9, '17/11/2019', 73.14, 36.7, 1, 24, 9);
-insert into Lugar_Proveedor (id, fecha, velocidad_subida, velocidad_bajada, horas_interrupcion, fk_lugar, fk_proveedor) values (10, '24/10/2019', 82.88, 54.79, 5, 25, 10);
-insert into Lugar_Proveedor (id, fecha, velocidad_subida, velocidad_bajada, horas_interrupcion, fk_lugar, fk_proveedor) values (11, '10/12/2019', 45.99, 68.14, 6, 26, 11);
-insert into Lugar_Proveedor (id, fecha, velocidad_subida, velocidad_bajada, horas_interrupcion, fk_lugar, fk_proveedor) values (12, '03/12/2019', 97.72, 12.17, 10, 27, 12);
-insert into Lugar_Proveedor (id, fecha, velocidad_subida, velocidad_bajada, horas_interrupcion, fk_lugar, fk_proveedor) values (13, '15/10/2019', 7.91, 56.51, 7, 28, 13);
-insert into Lugar_Proveedor (id, fecha, velocidad_subida, velocidad_bajada, horas_interrupcion, fk_lugar, fk_proveedor) values (14, '17/12/2019', 88.19, 74.23, 7, 29, 14);
-insert into Lugar_Proveedor (id, fecha, velocidad_subida, velocidad_bajada, horas_interrupcion, fk_lugar, fk_proveedor) values (15, '24/12/2019', 63.41, 7.8, 10, 30, 15);
-insert into Lugar_Proveedor (id, fecha, velocidad_subida, velocidad_bajada, horas_interrupcion, fk_lugar, fk_proveedor) values (16, '14/12/2019', 4.18, 14.32, 7, 31, 1);
-insert into Lugar_Proveedor (id, fecha, velocidad_subida, velocidad_bajada, horas_interrupcion, fk_lugar, fk_proveedor) values (17, '26/11/2019', 75.97, 32.22, 11, 32, 2);
-insert into Lugar_Proveedor (id, fecha, velocidad_subida, velocidad_bajada, horas_interrupcion, fk_lugar, fk_proveedor) values (18, '14/11/2019', 74.72, 21.39, 7, 33, 3);
-insert into Lugar_Proveedor (id, fecha, velocidad_subida, velocidad_bajada, horas_interrupcion, fk_lugar, fk_proveedor) values (19, '25/12/2019', 36.11, 30.96, 11, 34, 4);
-insert into Lugar_Proveedor (id, fecha, velocidad_subida, velocidad_bajada, horas_interrupcion, fk_lugar, fk_proveedor) values (20, '30/11/2019', 45.94, 7.08, 3, 35, 5);
-insert into Lugar_Proveedor (id, fecha, velocidad_subida, velocidad_bajada, horas_interrupcion, fk_lugar, fk_proveedor) values (21, '20/12/2019', 98.18, 25.76, 10, 36, 6);
-insert into Lugar_Proveedor (id, fecha, velocidad_subida, velocidad_bajada, horas_interrupcion, fk_lugar, fk_proveedor) values (22, '02/12/2019', 57.96, 85.05, 8, 37, 7);
-insert into Lugar_Proveedor (id, fecha, velocidad_subida, velocidad_bajada, horas_interrupcion, fk_lugar, fk_proveedor) values (23, '26/10/2019', 12.02, 36.04, 4, 38, 8);
-insert into Lugar_Proveedor (id, fecha, velocidad_subida, velocidad_bajada, horas_interrupcion, fk_lugar, fk_proveedor) values (24, '24/10/2019', 79.59, 3.49, 11, 39, 9);
-insert into Lugar_Proveedor (id, fecha, velocidad_subida, velocidad_bajada, horas_interrupcion, fk_lugar, fk_proveedor) values (25, '10/12/2019', 90.64, 31.92, 2, 40, 10);
-insert into Lugar_Proveedor (id, fecha, velocidad_subida, velocidad_bajada, horas_interrupcion, fk_lugar, fk_proveedor) values (26, '15/11/2019', 21.21, 55.15, 1, 41, 11);
-insert into Lugar_Proveedor (id, fecha, velocidad_subida, velocidad_bajada, horas_interrupcion, fk_lugar, fk_proveedor) values (27, '19/11/2019', 68.46, 76.47, 1, 42, 12);
-insert into Lugar_Proveedor (id, fecha, velocidad_subida, velocidad_bajada, horas_interrupcion, fk_lugar, fk_proveedor) values (28, '11/12/2019', 11.48, 97.76, 5, 43, 13);
-insert into Lugar_Proveedor (id, fecha, velocidad_subida, velocidad_bajada, horas_interrupcion, fk_lugar, fk_proveedor) values (29, '22/10/2019', 91.83, 1.84, 9, 44, 14);
-insert into Lugar_Proveedor (id, fecha, velocidad_subida, velocidad_bajada, horas_interrupcion, fk_lugar, fk_proveedor) values (30, '16/12/2019', 31.04, 96.08, 6, 45, 15);
-insert into Lugar_Proveedor (id, fecha, velocidad_subida, velocidad_bajada, horas_interrupcion, fk_lugar, fk_proveedor) values (31, '29/10/2019', 59.21, 55.33, 4, 46, 1);
-insert into Lugar_Proveedor (id, fecha, velocidad_subida, velocidad_bajada, horas_interrupcion, fk_lugar, fk_proveedor) values (32, '18/10/2019', 14.32, 43.05, 6, 47, 2);
-insert into Lugar_Proveedor (id, fecha, velocidad_subida, velocidad_bajada, horas_interrupcion, fk_lugar, fk_proveedor) values (33, '20/11/2019', 19.63, 21.92, 6, 48, 3);
-insert into Lugar_Proveedor (id, fecha, velocidad_subida, velocidad_bajada, horas_interrupcion, fk_lugar, fk_proveedor) values (34, '12/10/2019', 1.38, 32.99, 12, 49, 4);
-insert into Lugar_Proveedor (id, fecha, velocidad_subida, velocidad_bajada, horas_interrupcion, fk_lugar, fk_proveedor) values (35, '15/11/2019', 91.99, 76.88, 8, 50, 5);
-insert into Lugar_Proveedor (id, fecha, velocidad_subida, velocidad_bajada, horas_interrupcion, fk_lugar, fk_proveedor) values (36, '19/12/2019', 17.53, 32.45, 6, 51, 6);
-insert into Lugar_Proveedor (id, fecha, velocidad_subida, velocidad_bajada, horas_interrupcion, fk_lugar, fk_proveedor) values (37, '05/11/2019', 9.11, 92.7, 11, 52, 7);
-insert into Lugar_Proveedor (id, fecha, velocidad_subida, velocidad_bajada, horas_interrupcion, fk_lugar, fk_proveedor) values (38, '13/10/2019', 88.16, 84.26, 2, 53, 8);
-insert into Lugar_Proveedor (id, fecha, velocidad_subida, velocidad_bajada, horas_interrupcion, fk_lugar, fk_proveedor) values (39, '16/11/2019', 43.74, 14.13, 3, 54, 9);
-insert into Lugar_Proveedor (id, fecha, velocidad_subida, velocidad_bajada, horas_interrupcion, fk_lugar, fk_proveedor) values (40, '29/11/2019', 31.38, 63.8, 2, 55, 10);
-insert into Lugar_Proveedor (id, fecha, velocidad_subida, velocidad_bajada, horas_interrupcion, fk_lugar, fk_proveedor) values (41, '05/10/2019', 50.38, 85.85, 5, 56, 11);
-insert into Lugar_Proveedor (id, fecha, velocidad_subida, velocidad_bajada, horas_interrupcion, fk_lugar, fk_proveedor) values (42, '25/12/2019', 66.66, 44.27, 7, 57, 12);
-insert into Lugar_Proveedor (id, fecha, velocidad_subida, velocidad_bajada, horas_interrupcion, fk_lugar, fk_proveedor) values (43, '26/10/2019', 50.96, 74.8, 3, 58, 13);
-insert into Lugar_Proveedor (id, fecha, velocidad_subida, velocidad_bajada, horas_interrupcion, fk_lugar, fk_proveedor) values (44, '09/12/2019', 91.74, 90.1, 3, 59, 14);
-insert into Lugar_Proveedor (id, fecha, velocidad_subida, velocidad_bajada, horas_interrupcion, fk_lugar, fk_proveedor) values (45, '29/11/2019', 51.52, 51.94, 5, 60, 15);
-insert into Lugar_Proveedor (id, fecha, velocidad_subida, velocidad_bajada, horas_interrupcion, fk_lugar, fk_proveedor) values (46, '25/11/2019', 39.36, 39.52, 12, 61, 1);
-insert into Lugar_Proveedor (id, fecha, velocidad_subida, velocidad_bajada, horas_interrupcion, fk_lugar, fk_proveedor) values (47, '29/12/2019', 65.33, 67.83, 9, 62, 2);
-insert into Lugar_Proveedor (id, fecha, velocidad_subida, velocidad_bajada, horas_interrupcion, fk_lugar, fk_proveedor) values (48, '02/10/2019', 99.74, 89.02, 12, 63, 3);
-insert into Lugar_Proveedor (id, fecha, velocidad_subida, velocidad_bajada, horas_interrupcion, fk_lugar, fk_proveedor) values (49, '17/12/2019', 71.58, 87.98, 10, 64, 4);
-insert into Lugar_Proveedor (id, fecha, velocidad_subida, velocidad_bajada, horas_interrupcion, fk_lugar, fk_proveedor) values (50, '26/12/2019', 31.89, 82.24, 3, 65, 5);
+/*------------------------Lugar_Proveedor---------------------------------*/   -- >>> BORRAR E INSERTAR DE NUEVO
+
+insert into Lugar_Proveedor (id, fecha, velocidad_subida, velocidad_bajada, horas_interrupcion, fk_lugar, fk_proveedor) values (sec_lugar_proveedor.nextval, '12/06/2020', 9.8, 6.15, 13, 6, 2);
+insert into Lugar_Proveedor (id, fecha, velocidad_subida, velocidad_bajada, horas_interrupcion, fk_lugar, fk_proveedor) values (sec_lugar_proveedor.nextval, '22/06/2020', 8.21, 2.82, 15, 7, 7);
+insert into Lugar_Proveedor (id, fecha, velocidad_subida, velocidad_bajada, horas_interrupcion, fk_lugar, fk_proveedor) values (sec_lugar_proveedor.nextval, '17/06/2020', 8.04, 12.23, 12, 8, 13);
+insert into Lugar_Proveedor (id, fecha, velocidad_subida, velocidad_bajada, horas_interrupcion, fk_lugar, fk_proveedor) values (sec_lugar_proveedor.nextval, '27/05/2020', 7.1, 14.6, 6, 9, 9);
+insert into Lugar_Proveedor (id, fecha, velocidad_subida, velocidad_bajada, horas_interrupcion, fk_lugar, fk_proveedor) values (sec_lugar_proveedor.nextval, '27/05/2020', 6.23, 12.8, 4, 10, 15);
+insert into Lugar_Proveedor (id, fecha, velocidad_subida, velocidad_bajada, horas_interrupcion, fk_lugar, fk_proveedor) values (sec_lugar_proveedor.nextval, '29/05/2020', 7.42, 12.93, 13, 11, 2);
+insert into Lugar_Proveedor (id, fecha, velocidad_subida, velocidad_bajada, horas_interrupcion, fk_lugar, fk_proveedor) values (sec_lugar_proveedor.nextval, '06/06/2020', 8.4, 17.57, 4, 12, 9);
+insert into Lugar_Proveedor (id, fecha, velocidad_subida, velocidad_bajada, horas_interrupcion, fk_lugar, fk_proveedor) values (sec_lugar_proveedor.nextval, '30/06/2020', 6.64, 4.63, 14, 13, 8);
+insert into Lugar_Proveedor (id, fecha, velocidad_subida, velocidad_bajada, horas_interrupcion, fk_lugar, fk_proveedor) values (sec_lugar_proveedor.nextval, '21/06/2020', 8.65, 17.49, 4, 14, 9);
+insert into Lugar_Proveedor (id, fecha, velocidad_subida, velocidad_bajada, horas_interrupcion, fk_lugar, fk_proveedor) values (sec_lugar_proveedor.nextval, '28/05/2020', 8.8, 7.77, 6, 15, 6);
+insert into Lugar_Proveedor (id, fecha, velocidad_subida, velocidad_bajada, horas_interrupcion, fk_lugar, fk_proveedor) values (sec_lugar_proveedor.nextval, '23/06/2020', 7.07, 9.71, 6, 6, 8);
+insert into Lugar_Proveedor (id, fecha, velocidad_subida, velocidad_bajada, horas_interrupcion, fk_lugar, fk_proveedor) values (sec_lugar_proveedor.nextval, '03/06/2020', 6.73, 8.96, 8, 7, 11);
+insert into Lugar_Proveedor (id, fecha, velocidad_subida, velocidad_bajada, horas_interrupcion, fk_lugar, fk_proveedor) values (sec_lugar_proveedor.nextval, '30/06/2020', 2.28, 4.0, 10, 8, 2);
+insert into Lugar_Proveedor (id, fecha, velocidad_subida, velocidad_bajada, horas_interrupcion, fk_lugar, fk_proveedor) values (sec_lugar_proveedor.nextval, '08/06/2020', 8.5, 12.98, 5, 9, 5);
+insert into Lugar_Proveedor (id, fecha, velocidad_subida, velocidad_bajada, horas_interrupcion, fk_lugar, fk_proveedor) values (sec_lugar_proveedor.nextval, '25/06/2020', 6.92, 8.86, 6, 10, 5);
+insert into Lugar_Proveedor (id, fecha, velocidad_subida, velocidad_bajada, horas_interrupcion, fk_lugar, fk_proveedor) values (sec_lugar_proveedor.nextval, '08/06/2020', 4.53, 6.31, 13, 11, 9);
+insert into Lugar_Proveedor (id, fecha, velocidad_subida, velocidad_bajada, horas_interrupcion, fk_lugar, fk_proveedor) values (sec_lugar_proveedor.nextval, '21/06/2020', 5.59, 10.63, 15, 12, 8);
+insert into Lugar_Proveedor (id, fecha, velocidad_subida, velocidad_bajada, horas_interrupcion, fk_lugar, fk_proveedor) values (sec_lugar_proveedor.nextval, '02/06/2020', 9.68, 13.63, 9, 13, 5);
+insert into Lugar_Proveedor (id, fecha, velocidad_subida, velocidad_bajada, horas_interrupcion, fk_lugar, fk_proveedor) values (sec_lugar_proveedor.nextval, '06/06/2020', 8.68, 13.07, 6, 14, 11);
+insert into Lugar_Proveedor (id, fecha, velocidad_subida, velocidad_bajada, horas_interrupcion, fk_lugar, fk_proveedor) values (sec_lugar_proveedor.nextval, '27/05/2020', 8.78, 17.8, 13, 15, 5);
+insert into Lugar_Proveedor (id, fecha, velocidad_subida, velocidad_bajada, horas_interrupcion, fk_lugar, fk_proveedor) values (sec_lugar_proveedor.nextval, '22/06/2020', 8.19, 13.66, 13, 6, 14);
+insert into Lugar_Proveedor (id, fecha, velocidad_subida, velocidad_bajada, horas_interrupcion, fk_lugar, fk_proveedor) values (sec_lugar_proveedor.nextval, '05/06/2020', 4.89, 18.19, 4, 7, 10);
+insert into Lugar_Proveedor (id, fecha, velocidad_subida, velocidad_bajada, horas_interrupcion, fk_lugar, fk_proveedor) values (sec_lugar_proveedor.nextval, '01/06/2020', 5.71, 12.51, 6, 8, 8);
+insert into Lugar_Proveedor (id, fecha, velocidad_subida, velocidad_bajada, horas_interrupcion, fk_lugar, fk_proveedor) values (sec_lugar_proveedor.nextval, '09/06/2020', 7.62, 15.98, 2, 9, 4);
+insert into Lugar_Proveedor (id, fecha, velocidad_subida, velocidad_bajada, horas_interrupcion, fk_lugar, fk_proveedor) values (sec_lugar_proveedor.nextval, '06/06/2020', 3.3, 17.26, 14, 10, 14);
+insert into Lugar_Proveedor (id, fecha, velocidad_subida, velocidad_bajada, horas_interrupcion, fk_lugar, fk_proveedor) values (sec_lugar_proveedor.nextval, '16/06/2020', 9.35, 3.72, 6, 11, 1);
+insert into Lugar_Proveedor (id, fecha, velocidad_subida, velocidad_bajada, horas_interrupcion, fk_lugar, fk_proveedor) values (sec_lugar_proveedor.nextval, '26/06/2020', 2.75, 3.96, 14, 12, 2);
+insert into Lugar_Proveedor (id, fecha, velocidad_subida, velocidad_bajada, horas_interrupcion, fk_lugar, fk_proveedor) values (sec_lugar_proveedor.nextval, '05/06/2020', 8.89, 16.18, 15, 13, 12);
+insert into Lugar_Proveedor (id, fecha, velocidad_subida, velocidad_bajada, horas_interrupcion, fk_lugar, fk_proveedor) values (sec_lugar_proveedor.nextval, '31/05/2020', 8.0, 8.78, 15, 14, 7);
+insert into Lugar_Proveedor (id, fecha, velocidad_subida, velocidad_bajada, horas_interrupcion, fk_lugar, fk_proveedor) values (sec_lugar_proveedor.nextval, '18/06/2020', 7.45, 10.31, 4, 15, 12);
+insert into Lugar_Proveedor (id, fecha, velocidad_subida, velocidad_bajada, horas_interrupcion, fk_lugar, fk_proveedor) values (sec_lugar_proveedor.nextval, '22/06/2020', 5.41, 6.05, 3, 6, 6);
+insert into Lugar_Proveedor (id, fecha, velocidad_subida, velocidad_bajada, horas_interrupcion, fk_lugar, fk_proveedor) values (sec_lugar_proveedor.nextval, '27/05/2020', 5.17, 19.49, 2, 7, 6);
+insert into Lugar_Proveedor (id, fecha, velocidad_subida, velocidad_bajada, horas_interrupcion, fk_lugar, fk_proveedor) values (sec_lugar_proveedor.nextval, '16/06/2020', 6.18, 12.72, 6, 8, 9);
+insert into Lugar_Proveedor (id, fecha, velocidad_subida, velocidad_bajada, horas_interrupcion, fk_lugar, fk_proveedor) values (sec_lugar_proveedor.nextval, '06/06/2020', 6.71, 5.35, 14, 9, 7);
+insert into Lugar_Proveedor (id, fecha, velocidad_subida, velocidad_bajada, horas_interrupcion, fk_lugar, fk_proveedor) values (sec_lugar_proveedor.nextval, '15/06/2020', 8.24, 9.05, 14, 10, 9);
+insert into Lugar_Proveedor (id, fecha, velocidad_subida, velocidad_bajada, horas_interrupcion, fk_lugar, fk_proveedor) values (sec_lugar_proveedor.nextval, '11/06/2020', 6.77, 17.67, 5, 11, 10);
+insert into Lugar_Proveedor (id, fecha, velocidad_subida, velocidad_bajada, horas_interrupcion, fk_lugar, fk_proveedor) values (sec_lugar_proveedor.nextval, '05/06/2020', 9.98, 10.38, 10, 12, 15);
+insert into Lugar_Proveedor (id, fecha, velocidad_subida, velocidad_bajada, horas_interrupcion, fk_lugar, fk_proveedor) values (sec_lugar_proveedor.nextval, '08/06/2020', 6.76, 18.85, 2, 13, 4);
+insert into Lugar_Proveedor (id, fecha, velocidad_subida, velocidad_bajada, horas_interrupcion, fk_lugar, fk_proveedor) values (sec_lugar_proveedor.nextval, '18/06/2020', 7.67, 12.61, 11, 14, 1);
+insert into Lugar_Proveedor (id, fecha, velocidad_subida, velocidad_bajada, horas_interrupcion, fk_lugar, fk_proveedor) values (sec_lugar_proveedor.nextval, '12/06/2020', 4.2, 2.01, 9, 15, 8);
+insert into Lugar_Proveedor (id, fecha, velocidad_subida, velocidad_bajada, horas_interrupcion, fk_lugar, fk_proveedor) values (sec_lugar_proveedor.nextval, '27/05/2020', 9.46, 13.52, 12, 6, 4);
+insert into Lugar_Proveedor (id, fecha, velocidad_subida, velocidad_bajada, horas_interrupcion, fk_lugar, fk_proveedor) values (sec_lugar_proveedor.nextval, '28/05/2020', 9.33, 12.83, 2, 7, 14);
+insert into Lugar_Proveedor (id, fecha, velocidad_subida, velocidad_bajada, horas_interrupcion, fk_lugar, fk_proveedor) values (sec_lugar_proveedor.nextval, '27/05/2020', 4.63, 6.96, 5, 8, 1);
+insert into Lugar_Proveedor (id, fecha, velocidad_subida, velocidad_bajada, horas_interrupcion, fk_lugar, fk_proveedor) values (sec_lugar_proveedor.nextval, '29/06/2020', 4.75, 2.22, 7, 9, 6);
+insert into Lugar_Proveedor (id, fecha, velocidad_subida, velocidad_bajada, horas_interrupcion, fk_lugar, fk_proveedor) values (sec_lugar_proveedor.nextval, '28/06/2020', 8.27, 17.62, 12, 10, 2);
+insert into Lugar_Proveedor (id, fecha, velocidad_subida, velocidad_bajada, horas_interrupcion, fk_lugar, fk_proveedor) values (sec_lugar_proveedor.nextval, '29/05/2020', 6.94, 10.36, 14, 11, 4);
+insert into Lugar_Proveedor (id, fecha, velocidad_subida, velocidad_bajada, horas_interrupcion, fk_lugar, fk_proveedor) values (sec_lugar_proveedor.nextval, '01/06/2020', 6.26, 13.56, 13, 12, 5);
+insert into Lugar_Proveedor (id, fecha, velocidad_subida, velocidad_bajada, horas_interrupcion, fk_lugar, fk_proveedor) values (sec_lugar_proveedor.nextval, '15/06/2020', 6.36, 13.09, 10, 13, 6);
+insert into Lugar_Proveedor (id, fecha, velocidad_subida, velocidad_bajada, horas_interrupcion, fk_lugar, fk_proveedor) values (sec_lugar_proveedor.nextval, '05/06/2020', 6.69, 9.07, 10, 14, 10);
+insert into Lugar_Proveedor (id, fecha, velocidad_subida, velocidad_bajada, horas_interrupcion, fk_lugar, fk_proveedor) values (sec_lugar_proveedor.nextval, '14/06/2020', 3.62, 10.02, 8, 15, 3);
 
 /*--------------------------Ayuda_Humanitaria-----------------------------*/
 insert into Ayuda_Humanitaria (id, fecha_donacion, cantidad_dinero, fk_pais_donador, fk_pais_ayudado) values (sec_ayuda_humanitaria.nextval, '16/01/2020', 7587224, 10, 11);
@@ -351,24 +352,23 @@ insert into Modelo_Lugar (id, rango_fecha,fk_lugar,fk_modelo) values (sec_modelo
 insert into Modelo_Lugar (id, rango_fecha,fk_lugar,fk_modelo) values (sec_modelo_lugar.nextval, Rango_Fecha('01/02/2020', '13/06/2020'),9,2);
 insert into Modelo_Lugar (id, rango_fecha,fk_lugar,fk_modelo) values (sec_modelo_lugar.nextval, Rango_Fecha('21/02/2020', '15/04/2020'),10,1);
 
-/*-------------------------------Frontera------------------------------------*/
-insert into Frontera (id,  rango_fecha, longitud, fk_lugar) values (sec_frontera.nextval, Rango_Fecha(null, null), 934, 6);
-insert into Frontera (id,  rango_fecha, longitud, fk_lugar) values (sec_frontera.nextval, Rango_Fecha(null, null), 139, 7);
-insert into Frontera (id,  rango_fecha, longitud, fk_lugar) values (sec_frontera.nextval, Rango_Fecha(null, null), 928, 8);
-insert into Frontera (id,  rango_fecha, longitud, fk_lugar) values (sec_frontera.nextval, Rango_Fecha(null, null), 509, 9);
-insert into Frontera (id,  rango_fecha, longitud, fk_lugar) values (sec_frontera.nextval, Rango_Fecha(null, null), 103, 10);
-insert into Frontera (id,  rango_fecha, longitud, fk_lugar) values (sec_frontera.nextval, Rango_Fecha(null, null), 173, 11);
-insert into Frontera (id,  rango_fecha, longitud, fk_lugar) values (sec_frontera.nextval, Rango_Fecha(null, null), 489, 12);
-insert into Frontera (id,  rango_fecha, longitud, fk_lugar) values (sec_frontera.nextval, Rango_Fecha(null, null), 804, 13);
-insert into Frontera (id,  rango_fecha, longitud, fk_lugar) values (sec_frontera.nextval, Rango_Fecha( null, null), 900, 14);
-insert into Frontera (id,  rango_fecha, longitud, fk_lugar) values (sec_frontera.nextval, Rango_Fecha(null, null), 623, 15);
-insert into Frontera (id,  rango_fecha, longitud, fk_lugar) values (sec_frontera.nextval, Rango_Fecha(null, null), 236, 6);
-insert into Frontera (id,  rango_fecha, longitud, fk_lugar) values (sec_frontera.nextval, Rango_Fecha(null, null), 736, 7);
-insert into Frontera (id,  rango_fecha, longitud, fk_lugar) values (sec_frontera.nextval, Rango_Fecha(null, null), 503, 8);
-insert into Frontera (id,  rango_fecha, longitud, fk_lugar) values (sec_frontera.nextval, Rango_Fecha( null, null), 773, 9);
-insert into Frontera (id,  rango_fecha, longitud, fk_lugar) values (sec_frontera.nextval, Rango_Fecha(null, null), 197, 10);
+/*-------------------------------Frontera------------------------------------*/ -- >>> BORRAR E INSERTAR DE NUEVO
 
-
+insert into Frontera (id, rango_fecha, longitud, fk_lugar) values (sec_frontera.nextval, Rango_Fecha('01/06/2020',null), 508, 6);
+insert into Frontera (id, rango_fecha, longitud, fk_lugar) values (sec_frontera.nextval, Rango_Fecha('01/06/2020',null), 705, 7);
+insert into Frontera (id, rango_fecha, longitud, fk_lugar) values (sec_frontera.nextval, Rango_Fecha('10/06/2020','24/06/2020'), 879, 8);
+insert into Frontera (id, rango_fecha, longitud, fk_lugar) values (sec_frontera.nextval, Rango_Fecha('19/06/2020','01/07/2020'), 507,9);
+insert into Frontera (id, rango_fecha, longitud, fk_lugar) values (sec_frontera.nextval, Rango_Fecha('01/06/2020',null), 978,10);
+insert into Frontera (id, rango_fecha, longitud, fk_lugar) values (sec_frontera.nextval, Rango_Fecha('10/06/2020','24/06/2020'), 792,11);
+insert into Frontera (id, rango_fecha, longitud, fk_lugar) values (sec_frontera.nextval, Rango_Fecha('01/06/2020','25/06/2020'), 658,12);
+insert into Frontera (id, rango_fecha, longitud, fk_lugar) values (sec_frontera.nextval, Rango_Fecha('19/06/2020','01/07/2020'), 248,13);
+insert into Frontera (id, rango_fecha, longitud, fk_lugar) values (sec_frontera.nextval, Rango_Fecha('01/06/2020',null), 674,14);
+insert into Frontera (id, rango_fecha, longitud, fk_lugar) values (sec_frontera.nextval, Rango_Fecha('19/06/2020','01/07/2020'), 951,15);
+insert into Frontera (id, rango_fecha, longitud, fk_lugar) values (sec_frontera.nextval, Rango_Fecha('01/06/2020','25/06/2020'), 680,7);
+insert into Frontera (id, rango_fecha, longitud, fk_lugar) values (sec_frontera.nextval, Rango_Fecha('19/06/2020','01/07/2020'), 252,9);
+insert into Frontera (id, rango_fecha, longitud, fk_lugar) values (sec_frontera.nextval, Rango_Fecha('01/06/2020','25/06/2020'), 982,11);
+insert into Frontera (id, rango_fecha, longitud, fk_lugar) values (sec_frontera.nextval, Rango_Fecha('10/06/2020','24/06/2020'), 103,13);
+insert into Frontera (id, rango_fecha, longitud, fk_lugar) values (sec_frontera.nextval, Rango_Fecha('01/06/2020','25/06/2020'), 191,15);
 
 
 /*-------------------------Ejecutar Personas.sql--------------------------*/

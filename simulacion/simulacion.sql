@@ -1,5 +1,5 @@
 --------------------------------------------------------
--- Archivo creado  - miércoles-julio-01-2020   
+-- Archivo creado  - miï¿½rcoles-julio-01-2020   
 --------------------------------------------------------
 --------------------------------------------------------
 --  DDL for Trigger DISMINUIR_INVENTARIO
@@ -752,3 +752,8 @@ begin
 end;
 
 /
+
+
+/*---------------------Ejecutar simulacion------------------*/
+set serveroutput on size unlimited;
+execute iniciar_simulacion('27/05/2020');

@@ -39,14 +39,15 @@ where  ep.fk_estatus=4 and ep.fk_persona=p.id and p.fk_lugar=l.id and ep.fecha_i
 
 
 update centro_atencion set nro_camas_ocupadas=0;
-delete from viaje;
-delete from sintoma_persona;
+delete from viaje where id>15;
+delete from sintoma_persona where id>2500;
 update Estatus_Persona set fk_centro_atencion=null,fecha_fallecimiento=null,fecha_infeccion=null,fecha_recuperacion=null,fk_estatus=1;
 delete from registro;
 update centro_insumo set cantidad=250;
 delete from registro where id>15;
 delete from modelo_lugar where id>15;
-
+delete from ayuda_insumo where id>15;
+delete from ayuda_humanitaria where id>15;
 
 
 
