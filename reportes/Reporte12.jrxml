@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.8.0.final using JasperReports Library version 6.8.0-2ed8dfabb690ff337a5797129f2cd92902b0c87b  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Reporte12" pageWidth="650" pageHeight="816" columnWidth="610" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ff474e23-3300-478a-93b0-ae2cec1fd257">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Oracle Connection | COVID-19"/>
+	<property name="net.sf.jasperreports.print.create.bookmarks" value="true"/>
+	<parameter name="pais" class="java.lang.String"/>
+	<parameter name="fecha_a" class="java.util.Date"/>
+	<queryString language="plsql">
+		<![CDATA[{call Reporte12($P{pais},$P{fecha_a}, $P{ORACLE_REF_CURSOR})}]]>
+	</queryString>
+	<field name="BANDERA" class="java.awt.Image">
+		<property name="com.jaspersoft.studio.field.label" value="BANDERA"/>
+	</field>
+	<field name="LOGO" class="java.awt.Image">
+		<property name="com.jaspersoft.studio.field.label" value="LOGO"/>
+	</field>
+	<field name="FECHA" class="java.util.Date">
+		<property name="com.jaspersoft.studio.field.label" value="FECHA"/>
+	</field>
+	<field name="VELOCIDAD_SUBIDA" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="VELOCIDAD_SUBIDA"/>
+	</field>
+	<field name="VELOCIDAD_BAJADA" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="VELOCIDAD_BAJADA"/>
+	</field>
+	<field name="HORAS_INTERRUPCION" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="HORAS_INTERRUPCION"/>
+	</field>
+	<group name="Group1"/>
+	<title>
+		<band height="130" splitType="Stretch">
+			<staticText>
+				<reportElement x="227" y="55" width="130" height="40" uuid="bdbe3139-6ed5-433f-9fc9-8c2c6c452802"/>
+				<textElement>
+					<font size="26"/>
+				</textElement>
+				<text><![CDATA[Reporte 12
+]]></text>
+			</staticText>
+			<componentElement>
+				<reportElement x="470" y="13" width="100" height="30" uuid="b0f734f9-20a5-46d7-a867-9a88bfe84415"/>
+				<jr:barbecue xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" type="2of7" drawText="false" checksumRequired="false">
+					<jr:codeExpression><![CDATA["1234"]]></jr:codeExpression>
+				</jr:barbecue>
+			</componentElement>
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement x="10" y="55" width="100" height="30" uuid="902dcae2-2836-417b-a58d-1ed62ee4e98a"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="-10" y="10" width="40" height="36" uuid="cebcf91d-9add-4558-8fb9-203714325463"/>
+				<imageExpression><![CDATA["Plantilla/Imagenes/6.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="30" y="10" width="130" height="33" uuid="c7695747-d841-47fe-92c0-d615b9fa7f1b"/>
+				<textElement>
+					<font fontName="Gloucester MT Extra Condensed" size="26"/>
+				</textElement>
+				<text><![CDATA[COVID-19]]></text>
+			</staticText>
+			<image>
+				<reportElement x="-20" y="-20" width="650" height="30" uuid="6b75d1e6-17d3-4dbc-bf1d-26e1453ba32b"/>
+				<imageExpression><![CDATA["Plantilla/Imagenes/2.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="33" splitType="Stretch">
+			<staticText>
+				<reportElement x="-10" y="1" width="100" height="30" uuid="8da4111f-af85-4b3c-bdec-39bc70a3b961">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ad2faac6-9534-4f96-84ac-82a410898969"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[BANDERA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="80" y="0" width="100" height="30" uuid="96d0a592-0eaa-49d8-baec-45c472758abe">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="738f30f0-ee54-4d54-9f8b-9c2e5d4b33ca"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[LOGO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="180" y="0" width="100" height="30" uuid="0b67f221-953f-4f99-afeb-51012975ec45">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="66f6d875-4eaa-4739-bbaf-82fbf7bfb598"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[FECHA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="280" y="0" width="100" height="30" uuid="559df105-2238-469d-8f6e-8c8443d0988d">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e23da695-e4b2-45b9-8d6d-bd9872e35c9b"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[VELOCIDAD SUBIDA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="390" y="0" width="100" height="30" uuid="d3cffb53-ea20-4ab5-9276-35db1c62527a">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="420af648-8cb7-4c0e-9498-4c86b11491a5"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[VELOCIDAD BAJADA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="500" y="0" width="120" height="30" uuid="35844659-1aa5-4a91-80bc-77fa1e906059">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="7a84419a-2394-4b93-b5c6-4f78123b3f41"/>
+				</reportElement>
+				<text><![CDATA[HORAS INTERRUPCION]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="97" splitType="Stretch">
+			<textField>
+				<reportElement x="180" y="0" width="100" height="30" uuid="a8f89e42-d565-4a3d-bb8c-92f913591f0b">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="66f6d875-4eaa-4739-bbaf-82fbf7bfb598"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{FECHA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="280" y="0" width="100" height="30" uuid="744d6e77-f2a2-406b-a49a-83525663e77b">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e23da695-e4b2-45b9-8d6d-bd9872e35c9b"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{VELOCIDAD_SUBIDA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="390" y="0" width="100" height="30" uuid="4934fcf9-dfe5-4b6c-900f-85cc0d062ed7">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="420af648-8cb7-4c0e-9498-4c86b11491a5"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{VELOCIDAD_BAJADA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="500" y="0" width="130" height="30" uuid="505fa76b-fa96-49d7-a6cf-c1710d3ac8b1">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="7a84419a-2394-4b93-b5c6-4f78123b3f41"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{HORAS_INTERRUPCION}]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="20" y="-10" width="50" height="50" uuid="9ba034ef-c0a5-4d83-8c03-a08361e49de8"/>
+				<imageExpression><![CDATA[$F{BANDERA}]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="95" y="-10" width="70" height="70" uuid="65121956-f6a4-4df7-8fc3-6d486a722069"/>
+				<imageExpression><![CDATA[$F{LOGO}]]></imageExpression>
+			</image>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="100" splitType="Stretch">
+			<image>
+				<reportElement x="-20" y="38" width="650" height="62" uuid="14ce39c2-84e0-46ba-8bbe-f4fbede08aa7"/>
+				<imageExpression><![CDATA["Plantilla/Imagenes/1.png"]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="570" y="60" width="50" height="30" forecolor="#D9EFB2" uuid="38a84be9-ab9a-43d0-89f4-ecc34066a289"/>
+				<textElement>
+					<font fontName="Gill Sans MT Ext Condensed Bold" size="16"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="-40" y="50" width="100" height="30" uuid="e5b8dc7d-63bc-4f29-8c43-894d03566304"/>
+				<textElement textAlignment="Right">
+					<font fontName="Gill Sans MT Ext Condensed Bold" size="16"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="60" y="50" width="100" height="30" uuid="a8b53ae1-5492-4e83-b1ae-ab3a0ce40542"/>
+				<textElement textAlignment="Left">
+					<font fontName="Gill Sans MT Ext Condensed Bold" size="16"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" of " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

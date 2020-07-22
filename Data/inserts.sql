@@ -361,14 +361,9 @@ insert into Frontera (id, rango_fecha, longitud, fk_lugar) values (sec_frontera.
 insert into Frontera (id, rango_fecha, longitud, fk_lugar) values (sec_frontera.nextval, Rango_Fecha('01/06/2020',null), 978,10);
 insert into Frontera (id, rango_fecha, longitud, fk_lugar) values (sec_frontera.nextval, Rango_Fecha('10/06/2020','24/06/2020'), 792,11);
 insert into Frontera (id, rango_fecha, longitud, fk_lugar) values (sec_frontera.nextval, Rango_Fecha('01/06/2020','25/06/2020'), 658,12);
-insert into Frontera (id, rango_fecha, longitud, fk_lugar) values (sec_frontera.nextval, Rango_Fecha('19/06/2020','01/07/2020'), 248,13);
+insert into Frontera (id, rango_fecha, longitud, fk_lugar) values (sec_frontera.nextval, Rango_Fecha('10/06/2020','24/06/2020'), 248,13);
 insert into Frontera (id, rango_fecha, longitud, fk_lugar) values (sec_frontera.nextval, Rango_Fecha('01/06/2020',null), 674,14);
 insert into Frontera (id, rango_fecha, longitud, fk_lugar) values (sec_frontera.nextval, Rango_Fecha('19/06/2020','01/07/2020'), 951,15);
-insert into Frontera (id, rango_fecha, longitud, fk_lugar) values (sec_frontera.nextval, Rango_Fecha('01/06/2020','25/06/2020'), 680,7);
-insert into Frontera (id, rango_fecha, longitud, fk_lugar) values (sec_frontera.nextval, Rango_Fecha('19/06/2020','01/07/2020'), 252,9);
-insert into Frontera (id, rango_fecha, longitud, fk_lugar) values (sec_frontera.nextval, Rango_Fecha('01/06/2020','25/06/2020'), 982,11);
-insert into Frontera (id, rango_fecha, longitud, fk_lugar) values (sec_frontera.nextval, Rango_Fecha('10/06/2020','24/06/2020'), 103,13);
-insert into Frontera (id, rango_fecha, longitud, fk_lugar) values (sec_frontera.nextval, Rango_Fecha('01/06/2020','25/06/2020'), 191,15);
 
 
 /*-------------------------Ejecutar Personas.sql--------------------------*/

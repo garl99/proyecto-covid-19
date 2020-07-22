@@ -162,5 +162,5 @@ execute Reporte07('Estados Unidos','27/05/2020', '28/05/2020',:cursore);
 
 set autoprint on;
 variable cursore refcursor;
-execute Reporte07(null,'27/05/2020', '28/05/2020',:cursore);
+execute Reporte07(null,'30/05/2020', '31/05/2020',:cursore);
 
