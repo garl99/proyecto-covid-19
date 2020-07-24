@@ -63,6 +63,13 @@ create or replace procedure Reporte13(pais varchar2, fecha_inicio date, fecha_fi
                  into bandera,fecha_i,fecha_f
                  from frontera f, lugar l
                  where f.fk_lugar=l.id and TO_DATE(f.rango_fecha.fecha_final,'DD/MM/YYYY')=TO_DATE(fecha_final,'DD/MM/YYYY') and l.id=id_pais;
+        else if((pais is null) and (fecha_inicio is null) and (fecha_final is null))then
+                 OPEN cursore FOR
+                 select l.bandera as bandera,f.rango_fecha.fecha_inicio as fecha1,f.rango_fecha.fecha_final as fecha2
+                 into bandera,fecha_i,fecha_f
+                 from frontera f, lugar l
+                 where f.fk_lugar=l.id;
+        end if;
         end if;
         end if;
         end if;
@@ -80,3 +87,7 @@ execute Reporte13(null,'10/06/2020', '24/06/2020',:cursore);
 set autoprint on;
 variable cursore refcursor;
 execute Reporte13('Venezuela','19/06/2020', '01/07/2020',:cursore);
+
+set autoprint on;
+variable cursore refcursor;
+execute Reporte13('Venezuela',null,null,:cursore);
